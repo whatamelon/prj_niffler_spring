@@ -1,0 +1,696 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- JAVA와 연결할 Mapper 파일 설정 -->
+
+<mapper namespace="poly.persistance.mapper.NoticeMapper">
+
+	<!-- <?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD 
+		Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> JAVA와 연결할 
+		Mapper 파일 설정 <mapper namespace="poly.persistance.mapper.NoticeMapper"> </mapper> -->
+
+	<!-- insertNotice부분 sql -->
+
+  <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$국어 매퍼 시작!!!!!$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+
+	<insert parameterType="NoticeDTO" id="insertKorean">
+		INSERT INTO KOREAN_EVAL
+			(
+				POST_SEQ_NO
+				,TITLE
+				,TEACHER
+				,CONTENTS
+				,USR_SEQ_NO
+				,USR_NICKNAME
+				,REG_DT
+				,SUBJECT
+				,SPEC_SUB
+			)
+				VALUES
+			(
+				SEQ_POST_NO.NEXTVAL,
+				#{title},
+				#{teacher},
+				#{contents}
+				,#{usr_seq_no}
+				,#{usr_nickname}
+				,SYSDATE
+				,#{subject}
+				,#{spec_sub}
+			)
+	 </insert>
+
+ 	<select id="selectPost" resultType="string">
+		SELECT 
+			MAX(POST_SEQ_NO) as post_seq_no
+		FROM KOREAN_EVAL
+	</select>
+
+	<select id="getKoreanListTotalCount" resultType="java.lang.Integer">
+		SELECT 
+			COUNT(0)
+			AS CNT
+			FROM KOREAN_EVAL
+	</select>
+
+	<!-- insert, update, delete, select -->
+
+
+	<select id="getKoreanList" resultType="NoticeDTO">
+	SELECT 
+		POST_SEQ_NO as post_seq_no
+			,TITLE as title
+			,CONTENTS as contents
+			,SUBJECT as subject
+			,SPEC_SUB as spec_sub
+			,TEACHER as teacher
+			, USR_NICKNAME as usr_nickname
+			, REG_POST_SEQ_NO as reg_post_seq_no
+			, REG_DT as reg_dt
+			,CHG_POST_SEQ_NO as chg_post_seq_no
+			,CHG_DT as chg_dt
+			,LIKE_NO as like_no
+			,DISLIKE_NO as dislike_no
+			,USR_SEQ_NO as usr_seq_no
+	FROM KOREAN_EVAL
+	</select>
+
+	<select parameterType="PagingDTO" id="getKoreanList2" resultType="NoticeDTO">
+		SELECT
+		POST_SEQ_NO as post_seq_no
+			,TITLE as title
+			,CONTENTS as contents
+			,SUBJECT as subject
+			,SPEC_SUB as spec_sub
+			,TEACHER as teacher
+			, USR_NICKNAME as usr_nickname
+			, REG_POST_SEQ_NO as reg_post_seq_no
+			, REG_DT as reg_dt
+			,CHG_POST_SEQ_NO as chg_post_seq_no
+			,CHG_DT as chg_dt
+			,LIKE_NO as like_no
+			,DISLIKE_NO as dislike_no
+			,USR_SEQ_NO as usr_seq_no
+		FROM (
+		SELECT
+		ROWNUM AS RNUM
+		, A.*FROM KOREAN_EVAL A
+		ORDER BY POST_SEQ_NO DESC) T
+		WHERE RNUM BETWEEN
+		(( #{page_num}-1) * #{page_count} + 1 ) AND ( #{page_num} * #{page_count} )
+	</select>
+
+	<!-- 게시글 정보 -->
+
+
+	<select parameterType="string" id="getSubstanceKorean" resultType="NoticeDTO">
+		SELECT
+			POST_SEQ_NO as post_seq_no
+			,TITLE as title
+			,CONTENTS as contents
+			,SUBJECT as subject
+			,SPEC_SUB as spec_sub
+			,TEACHER as teacher
+			, USR_NICKNAME as usr_nickname
+			, REG_POST_SEQ_NO as reg_post_seq_no
+			, REG_DT as reg_dt
+			,CHG_POST_SEQ_NO as chg_post_seq_no
+			,CHG_DT as chg_dt
+			,LIKE_NO as like_no
+			,DISLIKE_NO as dislike_no
+			,USR_SEQ_NO as usr_seq_no
+		FROM KOREAN_EVAL
+		WHERE POST_SEQ_NO = #{post_seq_no}
+	</select>
+	
+	<update id="updateKorean" parameterType="NoticeDTO">
+		UPDATE KOREAN_EVAL
+			SET
+				TITLE = #{title}
+				,CONTENTS = #{contents}
+				,USR_SEQ_NO = #{usr_seq_no}
+				,POST_SEQ_NO = #{post_seq_no}
+				,TEACHER = #{teacher}
+		WHERE POST_SEQ_NO = #{post_seq_no}
+	</update>
+	
+	<delete id="deleteKorean" parameterType="NoticeDTO">
+		DELETE
+		FROM KOREAN_EVAL
+		WHERE POST_SEQ_NO = #{post_seq_no}
+	</delete>
+
+	<!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$국어 매퍼 끝!!!!!$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+
+
+  <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$수학 매퍼 시작!!!!!$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+
+	<insert parameterType="NoticeDTO" id="insertMath">
+		INSERT INTO MATH_EVAL
+			(
+				POST_SEQ_NO
+				,TITLE
+				,TEACHER
+				,CONTENTS
+				,USR_SEQ_NO
+				,USR_NICKNAME
+				,REG_DT
+				,SUBJECT
+				,SPEC_SUB
+			)
+				VALUES
+			(
+				SEQ_POST_NO.NEXTVAL,
+				#{title},
+				#{teacher},
+				#{contents}
+				,#{usr_seq_no}
+				,#{usr_nickname}
+				,SYSDATE
+				,#{subject}
+				,#{spec_sub}
+			)
+	 </insert>
+
+	<select id="getMathListTotalCount" resultType="java.lang.Integer">
+		SELECT 
+			COUNT(0)
+			AS CNT
+			FROM MATH_EVAL
+	</select>
+
+	<select id="getMathList" resultType="NoticeDTO">
+	SELECT 
+		POST_SEQ_NO as post_seq_no
+			,TITLE as title
+			,CONTENTS as contents
+			,SUBJECT as subject
+			,SPEC_SUB as spec_sub
+			,TEACHER as teacher
+			, USR_NICKNAME as usr_nickname
+			, REG_POST_SEQ_NO as reg_post_seq_no
+			, REG_DT as reg_dt
+			,CHG_POST_SEQ_NO as chg_post_seq_no
+			,CHG_DT as chg_dt
+			,LIKE_NO as like_no
+			,DISLIKE_NO as dislike_no
+			,USR_SEQ_NO as usr_seq_no
+	FROM MATH_EVAL
+	</select>
+
+	<select parameterType="PagingDTO" id="getMathList2" resultType="NoticeDTO">
+		SELECT
+		POST_SEQ_NO as post_seq_no
+			,TITLE as title
+			,CONTENTS as contents
+			,SUBJECT as subject
+			,SPEC_SUB as spec_sub
+			,TEACHER as teacher
+			, USR_NICKNAME as usr_nickname
+			, REG_POST_SEQ_NO as reg_post_seq_no
+			, REG_DT as reg_dt
+			,CHG_POST_SEQ_NO as chg_post_seq_no
+			,CHG_DT as chg_dt
+			,LIKE_NO as like_no
+			,DISLIKE_NO as dislike_no
+			,USR_SEQ_NO as usr_seq_no
+		FROM (
+		SELECT
+		ROWNUM AS RNUM
+		, A.*FROM MATH_EVAL A
+		ORDER BY POST_SEQ_NO DESC) T
+		WHERE RNUM BETWEEN
+		(( #{page_num}-1) * #{page_count} + 1 ) AND ( #{page_num} * #{page_count} )
+	</select>
+
+	<!-- 게시글 정보 -->
+
+
+	<select parameterType="string" id="getSubstanceMath" resultType="NoticeDTO">
+		SELECT
+			POST_SEQ_NO as post_seq_no
+			,TITLE as title
+			,CONTENTS as contents
+			,SUBJECT as subject
+			,SPEC_SUB as spec_sub
+			,TEACHER as teacher
+			, USR_NICKNAME as usr_nickname
+			, REG_POST_SEQ_NO as reg_post_seq_no
+			, REG_DT as reg_dt
+			,CHG_POST_SEQ_NO as chg_post_seq_no
+			,CHG_DT as chg_dt
+			,LIKE_NO as like_no
+			,DISLIKE_NO as dislike_no
+			,USR_SEQ_NO as usr_seq_no
+		FROM MATH_EVAL
+		WHERE POST_SEQ_NO = #{post_seq_no}
+	</select>
+	
+	<update id="updateMath" parameterType="NoticeDTO">
+		UPDATE MATH_EVAL
+			SET
+				TITLE = #{title}
+				,CONTENTS = #{contents}
+				,USR_SEQ_NO = #{usr_seq_no}
+				,POST_SEQ_NO = #{post_seq_no}
+				,TEACHER = #{teacher}
+		WHERE POST_SEQ_NO = #{post_seq_no}
+	</update>
+	
+	<delete id="deleteMath" parameterType="NoticeDTO">
+		DELETE
+		FROM MATH_EVAL
+		WHERE POST_SEQ_NO = #{post_seq_no}
+	</delete>
+	<!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$수학 매퍼 끝!!!!!$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+
+
+
+  <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$영어 매퍼 시작!!!!!$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+
+	<insert parameterType="NoticeDTO" id="insertEng">
+		INSERT INTO ENG_EVAL
+			(
+				POST_SEQ_NO
+				,TITLE
+				,TEACHER
+				,CONTENTS
+				,USR_SEQ_NO
+				,USR_NICKNAME
+				,REG_DT
+				,SUBJECT
+				,SPEC_SUB
+			)
+				VALUES
+			(
+				SEQ_POST_NO.NEXTVAL,
+				#{title},
+				#{teacher},
+				#{contents}
+				,#{usr_seq_no}
+				,#{usr_nickname}
+				,SYSDATE
+				,#{subject}
+				,#{spec_sub}
+			)
+	 </insert>
+
+	<select id="getEngListTotalCount" resultType="java.lang.Integer">
+		SELECT 
+			COUNT(0)
+			AS CNT
+			FROM ENG_EVAL
+	</select>
+
+	<!-- insert, update, delete, select -->
+
+
+	<select id="getEngList" resultType="NoticeDTO">
+	SELECT 
+		POST_SEQ_NO as post_seq_no
+			,TITLE as title
+			,CONTENTS as contents
+			,SUBJECT as subject
+			,SPEC_SUB as spec_sub
+			,TEACHER as teacher
+			, USR_NICKNAME as usr_nickname
+			, REG_POST_SEQ_NO as reg_post_seq_no
+			, REG_DT as reg_dt
+			,CHG_POST_SEQ_NO as chg_post_seq_no
+			,CHG_DT as chg_dt
+			,LIKE_NO as like_no
+			,DISLIKE_NO as dislike_no
+			,USR_SEQ_NO as usr_seq_no
+	FROM ENG_EVAL
+	</select>
+
+	<select parameterType="PagingDTO" id="getEngList2" resultType="NoticeDTO">
+		SELECT
+		POST_SEQ_NO as post_seq_no
+			,TITLE as title
+			,CONTENTS as contents
+			,SUBJECT as subject
+			,SPEC_SUB as spec_sub
+			,TEACHER as teacher
+			, USR_NICKNAME as usr_nickname
+			, REG_POST_SEQ_NO as reg_post_seq_no
+			, REG_DT as reg_dt
+			,CHG_POST_SEQ_NO as chg_post_seq_no
+			,CHG_DT as chg_dt
+			,LIKE_NO as like_no
+			,DISLIKE_NO as dislike_no
+			,USR_SEQ_NO as usr_seq_no
+		FROM (
+		SELECT
+		ROWNUM AS RNUM
+		, A.*FROM ENG_EVAL A
+		ORDER BY POST_SEQ_NO DESC) T
+		WHERE RNUM BETWEEN
+		(( #{page_num}-1) * #{page_count} + 1 ) AND ( #{page_num} * #{page_count} )
+	</select>
+
+	<!-- 게시글 정보 -->
+
+
+	<select parameterType="string" id="getSubstanceEng" resultType="NoticeDTO">
+		SELECT
+			POST_SEQ_NO as post_seq_no
+			,TITLE as title
+			,CONTENTS as contents
+			,SUBJECT as subject
+			,SPEC_SUB as spec_sub
+			,TEACHER as teacher
+			, USR_NICKNAME as usr_nickname
+			, REG_POST_SEQ_NO as reg_post_seq_no
+			, REG_DT as reg_dt
+			,CHG_POST_SEQ_NO as chg_post_seq_no
+			,CHG_DT as chg_dt
+			,LIKE_NO as like_no
+			,DISLIKE_NO as dislike_no
+			,USR_SEQ_NO as usr_seq_no
+		FROM ENG_EVAL
+		WHERE POST_SEQ_NO = #{post_seq_no}
+	</select>
+	
+	<update id="updateEng" parameterType="NoticeDTO">
+		UPDATE ENG_EVAL
+			SET
+				TITLE = #{title}
+				,CONTENTS = #{contents}
+				,USR_SEQ_NO = #{usr_seq_no}
+				,POST_SEQ_NO = #{post_seq_no}
+				,TEACHER = #{teacher}
+		WHERE POST_SEQ_NO = #{post_seq_no}
+	</update>
+	
+	<delete id="deleteEng" parameterType="NoticeDTO">
+		DELETE
+		FROM ENG_EVAL
+		WHERE POST_SEQ_NO = #{post_seq_no}
+	</delete>
+
+	<!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$영어 매퍼 끝!!!!!$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+
+
+  <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$공부템 매퍼 시작!!!!!$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+
+	<insert parameterType="NoticeDTO" id="insertItem">
+		INSERT INTO ITEM_EVAL
+			(
+				POST_SEQ_NO
+				,TITLE
+				,CONTENTS
+				,USR_SEQ_NO
+				,USR_NICKNAME
+				,REG_DT
+			)
+				VALUES
+			(
+				SEQ_POST_NO.NEXTVAL,
+				#{title},
+				#{contents}
+				,#{usr_seq_no}
+				,#{usr_nickname}
+				,SYSDATE
+			)
+	 </insert>
+
+	<select id="getItemListTotalCount" resultType="java.lang.Integer">
+		SELECT 
+			COUNT(0)
+			AS CNT
+			FROM ITEM_EVAL
+	</select>
+
+	<!-- insert, update, delete, select -->
+
+
+	<select id="getItemList" resultType="NoticeDTO">
+	SELECT 
+		POST_SEQ_NO as post_seq_no
+			,TITLE as title
+			,CONTENTS as contents
+			, USR_NICKNAME as usr_nickname
+			, REG_POST_SEQ_NO as reg_post_seq_no
+			, REG_DT as reg_dt
+			,CHG_POST_SEQ_NO as chg_post_seq_no
+			,CHG_DT as chg_dt
+			,LIKE_NO as like_no
+			,DISLIKE_NO as dislike_no
+			,USR_SEQ_NO as usr_seq_no
+	FROM ITEM_EVAL
+	</select>
+
+	<select parameterType="PagingDTO" id="getItemList2" resultType="NoticeDTO">
+		SELECT
+		POST_SEQ_NO as post_seq_no
+			,TITLE as title
+			,CONTENTS as contents
+			, USR_NICKNAME as usr_nickname
+			, REG_POST_SEQ_NO as reg_post_seq_no
+			, REG_DT as reg_dt
+			,CHG_POST_SEQ_NO as chg_post_seq_no
+			,CHG_DT as chg_dt
+			,LIKE_NO as like_no
+			,DISLIKE_NO as dislike_no
+			,USR_SEQ_NO as usr_seq_no
+		FROM (
+		SELECT
+		ROWNUM AS RNUM
+		, A.*FROM ITEM_EVAL A
+		ORDER BY POST_SEQ_NO DESC) T
+		WHERE RNUM BETWEEN
+		(( #{page_num}-1) * #{page_count} + 1 ) AND ( #{page_num} * #{page_count} )
+	</select>
+
+	<!-- 게시글 정보 -->
+
+
+	<select parameterType="string" id="getSubstanceItem" resultType="NoticeDTO">
+		SELECT
+			POST_SEQ_NO as post_seq_no
+			,TITLE as title
+			,CONTENTS as contents
+			, USR_NICKNAME as usr_nickname
+			, REG_POST_SEQ_NO as reg_post_seq_no
+			, REG_DT as reg_dt
+			,CHG_POST_SEQ_NO as chg_post_seq_no
+			,CHG_DT as chg_dt
+			,LIKE_NO as like_no
+			,DISLIKE_NO as dislike_no
+			,USR_SEQ_NO as usr_seq_no
+		FROM ITEM_EVAL
+		WHERE POST_SEQ_NO = #{post_seq_no}
+	</select>
+	
+	<update id="updateItem" parameterType="NoticeDTO">
+		UPDATE ITEM_EVAL
+			SET
+				TITLE = #{title}
+				,CONTENTS = #{contents}
+				,USR_SEQ_NO = #{usr_seq_no}
+				,POST_SEQ_NO = #{post_seq_no}
+		WHERE POST_SEQ_NO = #{post_seq_no}
+	</update>
+	
+	<delete id="deleteItem" parameterType="NoticeDTO">
+		DELETE
+		FROM ITEM_EVAL
+		WHERE POST_SEQ_NO = #{post_seq_no}
+	</delete>
+
+	<!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$공부템 매퍼 끝!!!!!$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+
+
+
+<!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$독서실 매퍼 시작!!!!!$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+
+	<insert parameterType="NoticeDTO" id="insertRoom">
+		INSERT INTO ROOM_EVAL
+			(
+				POST_SEQ_NO
+				,TITLE
+				,CONTENTS
+				,USR_SEQ_NO
+				,USR_NICKNAME
+				,REG_DT
+				,CITY
+			)
+				VALUES
+			(
+				SEQ_POST_NO.NEXTVAL,
+				#{title},
+				#{contents}
+				,#{usr_seq_no}
+				,#{usr_nickname}
+				,SYSDATE
+				,#{city}
+			)
+	 </insert>
+
+	<select id="getRoomListTotalCount" resultType="java.lang.Integer">
+		SELECT 
+			COUNT(0)
+			AS CNT
+			FROM ROOM_EVAL
+	</select>
+
+	<!-- insert, update, delete, select -->
+
+
+	<select id="getRoomList" resultType="NoticeDTO">
+	SELECT 
+		POST_SEQ_NO as post_seq_no
+			,TITLE as title
+			,CONTENTS as contents
+			, USR_NICKNAME as usr_nickname
+			, REG_POST_SEQ_NO as reg_post_seq_no
+			, REG_DT as reg_dt
+			,CHG_POST_SEQ_NO as chg_post_seq_no
+			,CHG_DT as chg_dt
+			,LIKE_NO as like_no
+			,DISLIKE_NO as dislike_no
+			,USR_SEQ_NO as usr_seq_no
+			,CITY as city
+	FROM ROOM_EVAL
+	</select>
+
+	<select parameterType="PagingDTO" id="getRoomList2" resultType="NoticeDTO">
+		SELECT
+		POST_SEQ_NO as post_seq_no
+			,TITLE as title
+			,CONTENTS as contents
+			, USR_NICKNAME as usr_nickname
+			, REG_POST_SEQ_NO as reg_post_seq_no
+			, REG_DT as reg_dt
+			,CHG_POST_SEQ_NO as chg_post_seq_no
+			,CHG_DT as chg_dt
+			,LIKE_NO as like_no
+			,DISLIKE_NO as dislike_no
+			,USR_SEQ_NO as usr_seq_no
+			,CITY as city
+		FROM (
+		SELECT
+		ROWNUM AS RNUM
+		, A.*FROM ROOM_EVAL A
+		ORDER BY POST_SEQ_NO DESC) T
+		WHERE RNUM BETWEEN
+		(( #{page_num}-1) * #{page_count} + 1 ) AND ( #{page_num} * #{page_count} )
+	</select>
+
+	<!-- 게시글 정보 -->
+
+
+	<select parameterType="string" id="getSubstanceRoom" resultType="NoticeDTO">
+		SELECT
+			POST_SEQ_NO as post_seq_no
+			,TITLE as title
+			,CONTENTS as contents
+			, USR_NICKNAME as usr_nickname
+			, REG_POST_SEQ_NO as reg_post_seq_no
+			, REG_DT as reg_dt
+			,CHG_POST_SEQ_NO as chg_post_seq_no
+			,CHG_DT as chg_dt
+			,LIKE_NO as like_no
+			,DISLIKE_NO as dislike_no
+			,USR_SEQ_NO as usr_seq_no
+			,CITY as city
+		FROM ROOM_EVAL
+		WHERE POST_SEQ_NO = #{post_seq_no}
+	</select>
+	
+	<update id="updateRoom" parameterType="NoticeDTO">
+		UPDATE ROOM_EVAL
+			SET
+				TITLE = #{title}
+				,CONTENTS = #{contents}
+				,USR_SEQ_NO = #{usr_seq_no}
+				,POST_SEQ_NO = #{post_seq_no}
+				,CITY = #{city}
+		WHERE POST_SEQ_NO = #{post_seq_no}
+	</update>
+	
+	<delete id="deleteRoom" parameterType="NoticeDTO">
+		DELETE
+		FROM ROOM_EVAL
+		WHERE POST_SEQ_NO = #{post_seq_no}
+	</delete>
+	
+
+	<!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$독서실 매퍼 끝!!!!!$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+	
+	
+	
+	<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 좋아요 !!!!$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+	
+	
+	<select id="getKoreanContentLikeUser" parameterType="NoticeDTO">
+	SELECT 	LIKE_FLAG
+	FROM		korean_eval_like
+	WHERE POST_SEQ_NO = #{post_seq_no}
+		AND 		USR_SEQ_NO = #{usr_seq_no}			
+	</select>
+	
+	<insert id="insertKoreanContentLike" parameterType="NoticeDTO">
+		INSERT INTO KOREAN_EVAL_LIKE
+			(POST_SEQ_NO
+			,USR_SEQ_NO
+			,CHG_DT
+			)
+			VALUES
+			(
+			 #{post_seq_no}
+			, #{usr_seq_no}
+			,SYSDATE
+			)			
+	</insert>
+	
+	<update id="updateKoreanContentLike" parameterType="NoticeDTO">
+		UPDATE KOREAN_EVAL_LIKE
+			SET LIKE_FLAG = #{like_flag}
+			, CHG_DT = SYSDATE
+		WHERE POST_SEQ_NO = #{post_seq_no}
+	</update>
+
+	<update id="updatecntLike" parameterType="NoticeDTO">
+		UPDATE KOREAN_EVAL
+  			SET
+  				LIKE_NO = LIKE_NO+1
+		WHERE POST_SEQ_NO = #{post_seq_no}
+	</update>
+	
+	<update id="updatecntLike2" parameterType="NoticeDTO">
+		UPDATE KOREAN_EVAL
+  			SET
+  				LIKE_NO = LIKE_NO-1
+		WHERE POST_SEQ_NO = #{post_seq_no}
+	</update>
+	
+	<update id="updatecntDislike" parameterType="NoticeDTO">
+		UPDATE KOREAN_EVAL
+  			SET
+  				DISLIKE_NO = DISLIKE_NO+1
+		WHERE POST_SEQ_NO = #{post_seq_no}
+	</update>
+	
+	<update id="updatecntDislike2" parameterType="NoticeDTO">
+		UPDATE KOREAN_EVAL
+  			SET
+  				DISLIKE_NO = DISLIKE_NO-1
+		WHERE POST_SEQ_NO = #{post_seq_no}
+	</update>
+	
+	<select id="compareUsrSeqNo" parameterType="string" resultType="int">
+		SELECT
+			COUNT(LIKE_FLAG)
+		FROM KOREAN_EVAL_LIKE
+		WHERE USR_SEQ_NO = #{usr_seq_no}
+		AND 		POST_SEQ_NO = #{post_seq_no}
+	</select>
+	
+	 <select id="gogoKorean" resultType="string">
+		SELECT 
+			MAX(POST_SEQ_NO) as post_seq_no
+		FROM KOREAN_EVAL
+	</select> 
+
+</mapper>

@@ -127,7 +127,7 @@
         result.innerHTML =  currentDate + "  " + currentTime + "  " + "seoul";
 </script>
 
-<script>
+<script type="text/javascript">
          $("#myButtons1").click(function(){
            alert('AJAX로 처리하고 정상 응답이면.. hide 해 준다.');
      $('#myModal').modal('hide')

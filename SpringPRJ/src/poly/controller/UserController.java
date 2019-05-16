@@ -48,6 +48,18 @@ public String faq (HttpServletRequest request, HttpServletResponse response, Mod
 	return "/user/faq";
 }
 	
+@RequestMapping(value="/user/weather")
+public String weather (HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception{
+
+	return "/user/weather";
+}
+
+@RequestMapping(value="/user/recommend")
+public String recommend (HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception{
+
+	return "/user/recommend";
+}
+
 	@RequestMapping(value="/user/createaccount")
 	public String createaccount (HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception{
 	

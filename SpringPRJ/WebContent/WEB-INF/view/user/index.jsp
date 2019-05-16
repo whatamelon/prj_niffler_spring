@@ -27,12 +27,12 @@
   
   <!-- CSS Files -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-  <link href="/resources/css/bootstrap.min.css" rel="stylesheet" />
   <link href="/resources/css/vendorprefixes.css" rel="stylesheet" />
   
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="/resources/demo/demo.css" rel="stylesheet" />
   
+
      <!--   Core JS Files   -->
   <script src="/resources/js/jquery-3.4.0.min.js"></script>
   <script src="/resources/js/core/popper.min.js"></script>
@@ -43,13 +43,35 @@
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 
-    <!-- Font Awesome JS -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-
 <style>
 	#sidebar ul.components{
 		border-bottom : 0px solid;
+	}
+	#sidebarCollapse.btn.btn-info{
+		-webkit-box-shadow : none !important;
+	}
+	.btn{
+		box-shadow : none !important;
+	}
+	#sidebar ul li a{
+		padding-left:20px;
+	}
+	#sidebar{
+		background:#FF8F00 !important;
+		box-shadow:none !important;
+	}
+	.navbar{
+		margin-bottom : 0px !important;
+	}
+	.card{
+		margin : 5px 50px 60px 50px;
+		width : 75%;
+		height : 150px;
+	}
+	p{
+    margin: 10px 0px 0px 40px;
+    font-weight:bold;
+    font-size: 1.0em;
 	}
 </style>
 
@@ -62,13 +84,13 @@
         <nav id="sidebar">
             <ul class="list-unstyled components">
                 <li>
-                    <a href="#"> <i class="fas fa-sun"></i> 날씨</a>
+                    <a href="user/weather.do"> <i class="fas fa-sun"></i> 날씨</a>
                 </li>
                 <li>
                     <a href="#"> <i class="fas fa-chart-line"></i> 트렌드 검색</a>
                 </li>
                 <li>
-                    <a href="#"> <i class="fas fa-check"></i> 오늘의 추천</a>
+                    <a href="user/recommend.do"> <i class="fas fa-check"></i> 오늘의 추천</a>
                 </li>
                  <li>
                     <a href="#"> <i class="far fa-grin"></i> 오늘의 기분</a>
@@ -76,15 +98,34 @@
             </ul>
         </nav>
 
-		<!-- Page Content  -->
-		<div id="content" style="padding: 0px !important;">
-
+		<!-- 메인 -->
+		<div id="content" style="padding: 0px !important; width:100%;">
+		<!-- 헤드바 -->
 			<nav class="navbar navbar-light amber darken-3">
 			<button type="button" id="sidebarCollapse" class="btn btn-info" style="background-color:#FF8F00 !important; border-color:#FF8F00 !important;">
 				<i class="fas fa-align-justify"></i>
 			</button>
+			<a href="user/intro.do" style="margin-right:15px;"><i class="fas fa-angle-right" style="color:white;"></i></a>
 			</nav>
+		
+		<!-- 기분을 알려주세요! -->
+		<p>오늘의 기분을 알려주세요!</p>
+		<div class="card" id="feel">
+			<p id="sibal1" onClick="sad"><i class="far fa-dizzy"></i></p>
+			<p id="sibal2" onClick="sad"><i class="far fa-tired"></i></p>
+			<p id="sibal3" onClick="sad"><i class="far fa-meh"></i></p>
+			<p id="sibal4" onClick="sad"><i class="far fa-smile-wink"></i></p>
+			<p id="sibal5" onClick="sad"><i class="far fa-grin-squint-tears"></i></p>
 		</div>
+			
+		<!-- 오늘의 추천 메인 페이지에 하나! -->
+		<p>오늘의 추천을 만나보세요!</p>
+		<div class="card" id="link">
+			
+		</div>
+		
+		</div>
+		
 	</div>
 
     <div class="overlay"></div>
@@ -98,17 +139,16 @@
     <!-- jQuery Custom Scroller CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
+
     <script type="text/javascript">
         $(document).ready(function () {
             $("#sidebar").mCustomScrollbar({
                 theme: "minimal"
             });
-
             $('#dismiss, .overlay').on('click', function () {
                 $('#sidebar').removeClass('active');
                 $('.overlay').removeClass('active');
             });
-
             $('#sidebarCollapse').on('click', function () {
                 $('#sidebar').addClass('active');
                 $('.overlay').addClass('active');
@@ -117,8 +157,76 @@
             });
         });
     </script>
+    
+    <script type="text/javascript">
+        var sibal1 = document.getElementById('sibal1');
+        var sibal2 = document.getElementById('sibal2');
+        var sibal3 = document.getElementById('sibal3');
+        var sibal4 = document.getElementById('sibal4');
+        var sibal5 = document.getElementById('sibal5');
+        var fuck1 = document.getElementById('fuck1');
+        var fuck2 = document.getElementById('fuck2');
+        var fuck3 = document.getElementById('fuck3');
+        var fuck4 = document.getElementById('fuck4');
+        var fuck5 = document.getElementById('fuck5');
+          
+        sibal1.onclick= function(){
+          sibal1.classList.remove('active');
+          sibal2.classList.add('active');
+          sibal3.classList.add('active');
+          sibal4.classList.add('active');
+          sibal5.classList.add('active');
+          fuck1.classList.toggle('active');
+          fuck2.classList.add('active');
+          fuck4.classList.add('active');
+         
+        }
+        sibal2.onclick= function(){
+          sibal1.classList.add('active');
+          sibal2.classList.remove('active');
+          sibal3.classList.add('active');
+          sibal4.classList.add('active');
+          sibal5.classList.add('active');
+          fuck4.classList.add('active');
+         
+        }
+        sibal3.onclick= function(){
+          sibal1.classList.add('active');
+          sibal2.classList.add('active');
+          sibal3.classList.remove('active');
+          sibal4.classList.add('active');
+          sibal5.classList.add('active');
+          fuck2.classList.add('active');
+          fuck3.classList.remove('active');
+          fuck4.classList.add('active');
+         
+        }
+        sibal4.onclick= function(){
+          sibal1.classList.add('active');
+          sibal2.classList.add('active');
+          sibal3.classList.add('active');
+          sibal4.classList.remove('active');
+          sibal5.classList.add('active');
+          fuck2.classList.add('active');
+         
+        }
+        sibal5.onclick= function(){
+          sibal1.classList.add('active');
+          sibal2.classList.add('active');
+          sibal3.classList.add('active');
+          sibal4.classList.add('active');
+          sibal5.classList.remove('active');
+           fuck1.classList.add('active');
+          fuck2.classList.add('active');
+          fuck3.classList.add('active');
+          fuck4.classList.add('active');
+          fuck5.classList.add('active');
+         
+        }
+      }
+    </script>
 
-  <!--  Google Maps Plugin    -->
+	<!--  Google Maps Plugin    -->
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
   <!-- Chart JS -->
   <script src="/resources/js/plugins/chartjs.min.js"></script>

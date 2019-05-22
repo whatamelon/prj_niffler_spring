@@ -60,6 +60,12 @@ public String recommend (HttpServletRequest request, HttpServletResponse respons
 	return "/user/recommend";
 }
 
+@RequestMapping(value="/user/Trend")
+public String Trend (HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception{
+
+	return "/user/Trend";
+}
+
 	@RequestMapping(value="/user/createaccount")
 	public String createaccount (HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception{
 	

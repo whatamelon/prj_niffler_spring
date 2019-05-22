@@ -142,30 +142,29 @@ h1 {
   padding: 0;
   width: 360px !important;
   height: 300px;
-  background: #ccc;
+  background: #FFF8E1;
   text-align: center;
-  line-height: 300px;
 }
 
 a.control_prev, a.control_next {
   position: absolute;
-  top: 40%;
-  z-index: 999;
+  top: 37.5%;
+  z-index: 1;
   display: block;
   padding: 4% 3%;
-  width: auto;
-  height: auto;
-  background: #2a2a2a;
+  width: 20px;
+  height: 20px;
+  background: #FFECB3;
   color: #fff;
   text-decoration: none;
   font-weight: 600;
   font-size: 18px;
-  opacity: 0.8;
+  opacity: 0.5;
   cursor: pointer;
 }
 
 a.control_prev:hover, a.control_next:hover {
-  opacity: 1;
+  opacity: 0.3;
   -webkit-transition: all 0.2s ease;
 }
 
@@ -184,8 +183,58 @@ a.control_next {
   width: 160px;
   font-size: 18px;
 }
-    
+h5{
+    width: 300px;
+    padding-left: 20px;
+}
 
+a#url1.button1, a#url2.button2, a#url3.button3 {
+	-webkit-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	-moz-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	-ms-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	-o-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	display: block;
+	margin: 50px auto 0px auto;
+	text-decoration: none;
+	border-radius: 4px;
+	padding: 10px 50px;
+	color: rgba(30, 22, 54, 0.6);
+	box-shadow: rgba(30, 22, 54, 0.4) 0 0px 0px 2px inset;
+    bottom: 0px;
+    position: absolute;
+    left: 20px;
+	width:200px;
+}
+
+a#url1.button1:hover, a#url2.button2:hover, a#url3.button3:hover  {
+	color: rgba(255, 255, 255, 0.85);
+	box-shadow: rgba(30, 22, 54, 0.7) 0 0px 0px 40px inset;
+}
+
+#preview1, #preview2, #preview3 {
+		max-width:300px;
+		min-width:300px;
+		max-height:150px;
+		min-height:150px
+}
+.blinking{
+	-webkit-animation:blink 1.5s ease-in-out infinite alternate;
+    -moz-animation:blink 1.5s ease-in-out infinite alternate;
+    animation:blink 1.5s ease-in-out infinite alternate;
+}
+@-webkit-keyframes blink{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+@-moz-keyframes blink{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+@keyframes blink{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
 </style>
 
 </head>
@@ -227,37 +276,38 @@ a.control_next {
          <div class="card-carousel" style="height:500px !important;">
 
 				<div id="slider">
-					<a href="#" class="control_next"></a>
-					<a href="#" class="control_prev"></a>
+					<a href="#" class="control_next blinking"><i class="fas fa-angle-right" style="color:white;"></i></a>
+					<a href="#" class="control_prev blinking"><i class="fas fa-angle-left" style="color:white;"></i></a>
 					<ul>
-						<li style="width:340px !important;">
+						<li style="width:340px !important; height:400px;">
 							<div>
-								  <img src="/resources/img/default-avatar.png" id="preview1" style="max-width:290px; min-width:290px; max-height:100px; min-height:100px;"/>
-             					  <h2 id="title1"></h2>
-              					  <h5 id="description1"></h5>
+								  <img src="/resources/img/default-avatar.png" id="preview1" />
+             					  <h2> <!-- id="title1"> -->Example</h2>
+              					  <h5> <!-- id="description1"> -->너와 함께한 시간 모두 눈부셨다. 날이 좋아서 날이 좋지 않아서 날이 적당해서 모든 날이 좋았다. 그리고
+						무슨 일이 벌어져도 니 잘못이 아니다</h5>
 							</div>
 							<div>
-									<a href=self id="url1" target="_blank">바로가기</a>
+									<a href=self id="url1" target="_blank" class="button1">바로가기</a>
 							</div>
 						</li>
-						<li style="background: #aaa; width: 340px !important; ">
+						<li style="width: 340px !important;height:400px; ">
 							<div class="my-card" id="card2">
-								<img src="/resources/img/default-avatar.png" id="preview2" style="max-width:290px; min-width:290px; max-height:100px; min-height:100px;"/>
+								<img src="/resources/img/default-avatar.png" id="preview2" />
 								<h2 id="title2"></h2>
 								<h5 id="description2"></h5>
 							</div>
 							<div>
-								<a href=self id="url2" target="_blank">바로가기</a>
+								<a href=self id="url2" target="_blank" class="button2">바로가기</a>
 							</div>
 						</li>
-						<li style="width: 340px !important;">
+						<li style="width: 340px !important;height:400px;">
 							<div class="my-card" id="card3">
-								<img src="/resources/img/default-avatar.png" id="preview3" style="max-width:290px; min-width:290px; max-height:100px; min-height:100px;"/>
+								<img src="/resources/img/default-avatar.png" id="preview3" />
 								<h2 id="title3"></h2>
 								<h5 id="description3"></h5>
 							</div>
 							<div>
-								<a href=self id="url3" target="_blank">바로가기</a>
+								<a href=self id="url3" target="_blank" class="button3">바로가기</a>
 							</div>
 						</li>
 

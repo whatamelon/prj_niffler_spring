@@ -97,18 +97,16 @@
 	}
 
 
-.transform {
-  -webkit-transition: all 2s ease;  
-  -moz-transition: all 2s ease;  
-  -o-transition: all 2s ease;  
-  -ms-transition: all 2s ease;  
-  transition: all 2s ease;
+.transform1,.transform2,.transform3,.transform4,.transform5{
+  -webkit-transition: all 1s ease;  
+  -moz-transition: all 1s ease;  
+  -o-transition: all 1s ease;  
+  -ms-transition: all 1s ease;  
+  transition: all 1s ease;
 }
 
 .transform-active {
-  background-color: #45CEE0;
-  height: 15px;
-  width: 15px;
+  font-size:60px;
 }
 </style>
 
@@ -155,11 +153,11 @@
 		<span style="display:flex;"><p>오늘의 날씨 : </p><p id=main style="margin-left:20px;"></p></span>
 		
 		<div class="card" id="feel">
-			<a style="color:#EF5350;" class="1 transform"><i class="far fa-dizzy fa-2x"  id="today"></i></a>
-			<a style="color:#FFD54F;" class="2"><i class="far fa-frown fa-2x transform"  id="today"></i></a>
-			<a style="color:#81C784;" class="3"><i class="far fa-meh fa-2x transform" id="today"></i></a>
-			<a style="color:#64B5F6;" class="4"><i class="far fa-smile fa-2x transform" id="today"></i></a>
-			<a style="color:#9575CD;" class="5"><i class="far fa-laugh-squint fa-2x transform" id="today"></i></a>
+			<a href="javascript:void(0);" onclick="check1" style="color:#EF5350;" class="1"><i class="far fa-dizzy fa-2x transform1"  id="today"></i></a>
+			<a href="javascript:void(0);" onclick="check2" style="color:#FFD54F;" class="2"><i class="far fa-frown fa-2x transform2"  id="today"></i></a>
+			<a href="javascript:void(0);" onclick="check3" style="color:#81C784;" class="3"><i class="far fa-meh fa-2x transform3" id="today"></i></a>
+			<a href="javascript:void(0);" onclick="check4"  style="color:#64B5F6;" class="4"><i class="far fa-smile fa-2x transform4" id="today"></i></a>
+			<a href="javascript:void(0);" onclick="check5" style="color:#9575CD;" class="5"><i class="far fa-laugh-squint fa-2x transform5" id="today"></i></a>
 		
 		</div>
 		
@@ -172,9 +170,25 @@
     <div class="overlay"></div>
     
     <script type="text/javascript">
-    $(".1.transform").click(function() {
-    	  $('.transform').toggleClass('transform-active');
+    $("i#today.far.fa-dizzy.fa-2x.transform1").click(function() {
+    	  $('.transform1').toggleClass('transform-active');
     	});
+    
+    $("i#today.far.fa-frown.fa-2x.transform2").click(function() {
+  	  $('.transform2').toggleClass('transform-active');
+  	});
+    
+    $("i#today.far.fa-meh.fa-2x.transform3").click(function() {
+  	  $('.transform3').toggleClass('transform-active');
+  	});
+    
+    $("i#today.far.fa-smile.fa-2x.transform4").click(function() {
+  	  $('.transform4').toggleClass('transform-active');
+  	});
+    
+    $("i#today.far.fa-laugh-squint.fa-2x.transform5").click(function() {
+  	  $('.transform5').toggleClass('transform-active');
+  	});
     </script>
     
     

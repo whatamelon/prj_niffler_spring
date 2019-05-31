@@ -68,15 +68,48 @@
 		margin-bottom : 0px !important;
 	}
 	.card{
-		margin : 5px 50px 60px 50px;
+		margin : 10px 50px 40px 50px;
 		width : 75%;
-		height : 500px;
+		height : 150px;
+		text-align: center;
 	}
 	p{
     margin: 10px 0px 0px 40px;
     font-weight:bold;
     font-size: 1.0em;
+    color:#000;
 	}
+	i#today{
+		margin-top:50px;
+		padding :0px 5px 0px 5px;
+	}
+	.btn.btn-primary{
+	box-shadow : 0 6px #999 !important;
+	cursor : pointer;
+	}
+	.btn.btn-primary:hover{
+	background-color:#536DFE;
+	}
+	.btn.btn-primary:active{
+	box-shadow : 0 3px #999 !important;
+	transform: translateY(3px) !important;
+	background-color:#536DFE;
+	}
+
+
+.transform {
+  -webkit-transition: all 2s ease;  
+  -moz-transition: all 2s ease;  
+  -o-transition: all 2s ease;  
+  -ms-transition: all 2s ease;  
+  transition: all 2s ease;
+}
+
+.transform-active {
+  background-color: #45CEE0;
+  height: 15px;
+  width: 15px;
+}
 </style>
 
 </head>
@@ -88,13 +121,13 @@
         <nav id="sidebar">
             <ul class="list-unstyled components">
                 <li>
-                    <a href="user/weather.do"> <i class="fas fa-sun"></i> 날씨</a>
+                    <a href="weather.do"> <i class="fas fa-sun"></i> 날씨</a>
                 </li>
                 <li>
-                    <a href="user/Trend.do"> <i class="fas fa-chart-line"></i> 트렌드 검색</a>
+                    <a href="Trend.do"> <i class="fas fa-chart-line"></i> 트렌드 검색</a>
                 </li>
                 <li>
-                    <a href="user/recommend.do"> <i class="fas fa-check"></i> 오늘의 추천</a>
+                    <a href="recommend.do"> <i class="fas fa-check"></i> 오늘의 추천</a>
                 </li>
                 <li>
                     <a href="feel.do"> <i class="fas fa-smile"></i> 오늘의 기분</a>
@@ -109,32 +142,51 @@
 			<button type="button" id="sidebarCollapse" class="btn btn-info" style="background-color:#FF8F00 !important; border-color:#FF8F00 !important;">
 				<i class="fas fa-align-justify"></i>
 			</button>
-			<a href="user/intro.do" style="margin-right:15px;"><i class="fas fa-angle-right" style="color:white;"></i></a>
+			<a href="intro.do" style="margin-right:15px;"><i class="fas fa-angle-right" style="color:white;"></i></a>
 			</nav>
 		
-		<!-- 핫 이슈! -->
-		<p>현재 핫 이슈!</p>
+		
+		<form>
+		
+		<p>오늘의 기분을 알려주세요!</p>
+		
+		<span style="display:flex;"><p>오늘은</p><p id=time-result style="margin-left:20px;"></p><p style="margin-left:20px;">입니다.</p></span>
+		
+		<span style="display:flex;"><p>오늘의 날씨 : </p><p id=main style="margin-left:20px;"></p></span>
+		
 		<div class="card" id="feel">
-		<p style="width: 100px; word-break: keep-all; margin-left: 80px; padding-top:20px; text-align: center;"><%@include file = "crawling.jsp" %></p>
+			<a style="color:#EF5350;" class="1 transform"><i class="far fa-dizzy fa-2x"  id="today"></i></a>
+			<a style="color:#FFD54F;" class="2"><i class="far fa-frown fa-2x transform"  id="today"></i></a>
+			<a style="color:#81C784;" class="3"><i class="far fa-meh fa-2x transform" id="today"></i></a>
+			<a style="color:#64B5F6;" class="4"><i class="far fa-smile fa-2x transform" id="today"></i></a>
+			<a style="color:#9575CD;" class="5"><i class="far fa-laugh-squint fa-2x transform" id="today"></i></a>
+		
 		</div>
 		
+		<button class="btn btn-primary" type="button" style="width:300px; margin-left:40px; border-radius:30px;"
+			onclick="$.sendFeelTimeWeather();">확인!</button>
 		
-		</div>
+		</form>
 		
 	</div>
-
     <div class="overlay"></div>
-
-    <!-- jQuery CDN - Slim version (=without AJAX) -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <!-- Popper.JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-    <!-- Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-    <!-- jQuery Custom Scroller CDN -->
+    
+    <script type="text/javascript">
+    $(".1.transform").click(function() {
+    	  $('.transform').toggleClass('transform-active');
+    	});
+    </script>
+    
+    
+    <script type="text/javascript">
+        var d = new Date();
+        var currentDate = d.getFullYear() + "년 " + ( d.getMonth() + 1 ) + "월 " + d.getDate() + "일 ";
+        var result = document.getElementById("time-result");
+        result.innerHTML =  currentDate;
+</script>
+    
+   <!-- jQuery Custom Scroller CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-
-
     <script type="text/javascript">
         $(document).ready(function () {
             $("#sidebar").mCustomScrollbar({
@@ -152,19 +204,35 @@
             });
         });
     </script>
-    
-    <script type="text/javascript">
-      
-    </script>
 
-	<!--  Google Maps Plugin    -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-  <!-- Chart JS -->
-  <script src="/resources/js/plugins/chartjs.min.js"></script>
-  <!--  Notifications Plugin    -->
-  <script src="/resources/js/plugins/bootstrap-notify.js"></script>
-  <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="/resources/js/now-ui-dashboard.min.js?v=1.2.0" type="text/javascript"></script>
+<script type="text/javascript">
+   const key = '3d31ad55e3b04dcdfb1d42ff1af32638';
+   function weatherBallon( cityID ) {
+      fetch('https://api.openweathermap.org/data/2.5/forecast?id=' + cityID+ '&appid=' + key)  
+      .then(function(resp) { return resp.json() }) // Convert data to json
+      .then(function(data) {
+         drawWeather(data);
+      })
+      .catch(function() {
+      // catch any errors
+   });;
+   }
+   function drawWeather( d ) {
+      
+      // 오늘 날씨
+     var main = d.list[4].weather[0].main;
+     
+     document.getElementById('main').innerHTML = main;
+
+   }
+    if(location=='Seoul-teukbyeolsi') document.getElementById("location").innerHTML = ('서울'); 
+
+   
+   window.onload = function() {
+      weatherBallon( 1835847 );
+   }
+   </script>
+
 
 </body>
 </html>

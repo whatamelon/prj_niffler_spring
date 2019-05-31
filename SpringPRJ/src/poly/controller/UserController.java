@@ -72,6 +72,12 @@ public String crawling (HttpServletRequest request, HttpServletResponse response
 	return "/user/crawling";
 }
 
+@RequestMapping(value="/user/feel")
+public String feel (HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception{
+
+	return "/user/feel";
+}
+
 	@RequestMapping(value="/user/createaccount")
 	public String createaccount (HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception{
 	

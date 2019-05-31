@@ -130,6 +130,9 @@
                 <li>
                     <a href="recommend.do"> <i class="fas fa-check"></i> 오늘의 추천</a>
                 </li>
+                <li>
+                    <a href="feel.do"> <i class="fas fa-smile"></i> 오늘의 기분</a>
+                </li>
             </ul>
         </nav>
 

@@ -125,6 +125,18 @@ svg {
 .title-text {
   font-size: 12px;
 }
+.btn.btn-primary{
+	box-shadow : 0 3px #999 !important;
+	cursor : pointer;
+	}
+	.btn.btn-primary:hover{
+	background-color:#536DFE;
+	}
+	.btn.btn-primary:active{
+	box-shadow : 0 1px #999 !important;
+	transform: translateY(2px) !important;
+	background-color:#536DFE;
+	}
 
 </style>
 
@@ -421,6 +433,9 @@ new Chart(document.getElementById("line-chart"), {
                 <li>
                     <a href="recommend.do"> <i class="fas fa-check"></i> 오늘의 추천</a>
                 </li>
+                <li>
+                    <a href="feel.do"> <i class="fas fa-smile"></i> 오늘의 기분</a>
+                </li>
             </ul>
         </nav>
 
@@ -475,7 +490,7 @@ new Chart(document.getElementById("line-chart"), {
 						style="margin: 3px 0px 0px 0px;" type="text"
 						name="keywordGroups[][keywords][]" placeholder="주제어와 동일" value="" />
 					</td>
-					<td style="text-align: center; display:flex;">
+					<td style="text-align: center; display:flex; padding-top:3px;">
 						<button class="btn btn-primary serviceAPIDatalabSearchPlus"
 							type="button">추가</button>&nbsp;
 						<button class="btn btn-primary serviceAPIDatalabSearchMinus"
@@ -486,10 +501,10 @@ new Chart(document.getElementById("line-chart"), {
 		</table>
 	</form>
 	<p>
-		<button class="btn btn-primary" type="button" style="width:100%;"
+		<button class="btn btn-primary" type="button" style="width:100%; border-radius:30px;"
 			onclick="$.serviceAPIDatalabSearch();">검색</button>
 	</p>
-	<canvas id="line-chart" width="800" height="450"></canvas>
+	<canvas id="line-chart" style="width:300px; height:300px;"></canvas>
 	</div>
 	    <div class="overlay"></div>
 </div>

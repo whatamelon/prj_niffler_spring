@@ -6,7 +6,47 @@
 <!--  ------------------------------헤드 시작-------------------------------- -->
 
 <head>
-<meta charset="utf-8" />
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="/resources/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="/resources/img/favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  
+  <title>
+    Now UI Dashboard by Creative Tim
+  </title>
+  
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  
+  <!-- material design -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.0/css/mdb.min.css" rel="stylesheet">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.0/js/mdb.min.js"></script>
+  
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+  
+  
+  <!--     Fonts and icons     -->
+  
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+  <link href="/resources/css/vendorprefixes.css" rel="stylesheet" />
+  
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link href="/resources/demo/demo.css" rel="stylesheet" />
+  
+
+  <script src="/resources/js/jquery-3.4.0.min.js"></script>
+  <script src="/resources/js/core/popper.min.js"></script>
+  <script src="/resources/js/core/bootstrap.min.js"></script>
+  
+
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="/resources/css/style3.css">
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
 
 <!-- jQuery CDN -->
 <link rel="stylesheet"	href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
@@ -24,11 +64,11 @@
 						top: ($(window).height() - 150) / 2 + "px", left: ($(window).width() - 150) / 2 + "px" } }); }); 
 			$(document).ajaxStop(function() { $.unblockUI(); }); });
 </script>
+
 <!-- Bootstrap CDN -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <!-- Prism CDN -->
 <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.13.0/themes/prism.min.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.13.0/themes/prism-coy.min.css" />
@@ -38,11 +78,34 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.13.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
 <script> Prism.plugins.autoloader.languages_path = "https://cdnjs.cloudflare.com/ajax/libs/prism/1.13.0/components/"; Prism.plugins.autoloader.use_minified = true; </script>
 
-<!-- D3 chart -->
-<script src="https://d3js.org/d3.v4.min.js"></script>
+
+<!--  <script src="https://d3js.org/d3.v5.min.js"></script>  -->
 
 <style>
-
+	#sidebar ul.components{
+		border-bottom : 0px solid;
+	}
+	#sidebarCollapse.btn.btn-info{
+		-webkit-box-shadow : none !important;
+	}
+	.btn{
+		box-shadow : none !important;
+	}
+	#sidebar ul li a{
+		padding-left:20px;
+	}
+	#sidebar{
+		background:#FF8F00 !important;
+		box-shadow:none !important;
+	}
+	.navbar{
+		margin-bottom : 0px !important;
+	}
+	
+	a:hover {
+		text-decoration : none;
+	}
+	
 svg {
     font-family: Sans-Serif, Arial;
 }
@@ -66,9 +129,62 @@ svg {
 </style>
 
 <script> 
+//  객체로들어가는 전역변수
+	var globaltmp;
+	var x;
+	var x1;
+	var x2;
+	
+	// 각 data.results.data 의 object로 들어가는 전역변수
+	var object1;
+	var object2;
+	var object3;
+	var object4;
+	var object5;
+	var object6;
+	var object7;
+	var object8;
+	var object9;
+	var object10;
+	var object11;
+	var object12;
+	var object13;
+	var object14;
+	
+	// title꺼내는 전역변수
+	var subject1;
+	var subject2;
+	
+	// 날짜꺼내는 전역변수
+	var date1;
+	var date2;
+	var date3;
+	var date4;
+	var date5;
+	var date6;
+	var date7;
+	
+	// 비율 꺼내는 전역변수
+	var ratio1;
+	var ratio2;
+	var ratio3;
+	var ratio4;
+	var ratio5;
+	var ratio6;
+	var ratio7;
+	var ratio8;
+	var ratio9;
+	var ratio10;
+	var ratio11;
+	var ratio12;
+	var ratio13;
+	var ratio14;
+	
+	
 	$(function () {
 		var XNaverClientId = "v05bZlQfeJ5_HKwzHAh8";
 		var XNaverClientSecret = "ZYa6od5gqF";
+		
 		$("#serviceAPIDatalabSearchStartDate, #serviceAPIDatalabSearchEndDate").datepicker({ dateFormat: "yy-mm-dd",
 			maxDate: new Date(), showButtonPanel: true });
 		$("#serviceAPIDatalabSearchStartDate, #serviceAPIDatalabSearchEndDate").datepicker("setDate", new Date());
@@ -129,186 +245,133 @@ svg {
 									"X-Naver-Client-Id": XNaverClientId, 
 									"X-Naver-Client-Secret": XNaverClientSecret 
 									},
-								data: JSON.stringify($("#serviceAPIDatalabSearchForm").serializeObject()),
+								data:  JSON.stringify($("#serviceAPIDatalabSearchForm").serializeObject()) ,
 								beforeSend: function (jqXHR, settings) {
 									jqXHR.setRequestHeader("x-requested-with", "*");
 									},
-								success: function (data, textStatus, jqXHR) {
+								success: function (data) {
+									
+									// 전역 변수 설정
+									globaltmp =  data;
+									x = data.results;
+									x1 = data.results[0];
+									x2 = data.results[1];
+									
+									object1 = data.results[0].data[0];
+									object2 = data.results[0].data[1];
+									object3 = data.results[0].data[2];
+									object4 = data.results[0].data[3];
+									object5 = data.results[0].data[4];
+									object6 = data.results[0].data[5];
+									object7 = data.results[0].data[6];
+									object8 = data.results[1].data[0];
+									object9 = data.results[1].data[1];
+									object10 = data.results[1].data[2];
+									object11 = data.results[1].data[3];
+									object12 = data.results[1].data[4];
+									object13 = data.results[1].data[5];
+									object14 = data.results[1].data[6];
+									
+									// 코드 미리보여주기
 									if (data != null) {
 										var serviceAPIDatalabSearchResponseCode = JSON.stringify(data, null, "\t");
-										
-										var serviceAPIDatalabSearchResponsePrismCode = "";
-										
-									serviceAPIDatalabSearchResponsePrismCode += "<pre class=\"line-numbers\"><code class=\"language-json\">";
-									serviceAPIDatalabSearchResponsePrismCode += serviceAPIDatalabSearchResponseCode.replace(/[&]/g, "&amp;").replace(/[<]/g, "&lt;").replace(/[>]/g, "&gt;");
-									serviceAPIDatalabSearchResponsePrismCode += "</code></pre>";
 									
 									$("#serviceAPIDatalabSearchResponseCode").val(serviceAPIDatalabSearchResponseCode);
 									
-									$("#serviceAPIDatalabSearchResponsePrismCode").html(serviceAPIDatalabSearchResponsePrismCode);
+									// 여기부터 data parsing 시작
+								
+									//  data 꺼내기 시작 
+								
+									// 노가다 시작한다 꽉잡아!
 									
-									Prism.highlightAll(); 
+									//title
+									subject1 = x1[Object.keys(x1)[0]];
+									subject2 = x2[Object.keys(x2)[0]];
+									
+									// date
+									date1 = object1[Object.keys(object1)[0]]; 
+									date2 = object2[Object.keys(object2)[0]]; 
+									date3 = object3[Object.keys(object3)[0]]; 
+									date4 = object4[Object.keys(object4)[0]]; 
+									date5 = object5[Object.keys(object5)[0]]; 
+									date6 = object6[Object.keys(object6)[0]]; 
+									date7 = object7[Object.keys(object7)[0]]; 
 
-										var width = 500;
-										var height = 300;
-										var margin = 50;
-										var duration = 250;
-
-										var lineOpacity = "0.25";
-										var lineOpacityHover = "0.85";
-										var otherLinesOpacityHover = "0.1";
-										var lineStroke = "1.5px";
-										var lineStrokeHover = "2.5px";
-
-										var circleOpacity = '0.85';
-										var circleOpacityOnLineHover = "0.25"
-										var circleRadius = 3;
-										var circleRadiusHover = 6;
-
-
-										/* Format Data */
-										var parseDate = d3.timeParse("%Y");
-										data.forEach(function(d) { 
-										  d.results[0].data[0].forEach(function(d) {
-										    d.results[0].data[0].period = parseDate(d.results[0].data[0].period);
-										    d.ratio = +d.ratio;    
-										  });
-										});
-
-
-										/* Scale */
-										var xScale = d3.scaleTime()
-										  .domain(d3.extent(data.results[0].data[0], d => d.period))
-										  .range([0, width-margin]);
-
-										var yScale = d3.scaleLinear()
-										  .domain([0, d3.max(data.results[0].data[0], d => d.ratio)])
-										  .range([height-margin, 0]);
-
-										var color = d3.scaleOrdinal(d3.schemeCategory10);
-
-										/* Add SVG */
-										var svg = d3.select("#chart").append("svg")
-										  .attr("width", (width+margin)+"px")
-										  .attr("height", (height+margin)+"px")
-										  .append('g')
-										  .attr("transform", `translate(${margin}, ${margin})`);
-
-
-										/* Add line into SVG */
-										var line = d3.line()
-										  .x(d => xScale(d.results[0].data[0].period))
-										  .y(d => yScale(d.results[0].data[0].ratio));
-
-										let lines = svg.append('g')
-										  .attr('class', 'lines');
-
-										lines.selectAll('.line-group')
-										  .data(data).enter()
-										  .append('g')
-										  .attr('class', 'line-group')  
-										  .on("mouseover", function(d, i) {
-										      svg.append("text")
-										        .attr("class", "title-text")
-										        .style("fill", color(i))        
-										        .text(d.results.title)
-										        .attr("text-anchor", "middle")
-										        .attr("x", (width-margin)/2)
-										        .attr("y", 5);
-										    })
-										  .on("mouseout", function(d) {
-										      svg.select(".title-text").remove();
-										    })
-										  .append('path')
-										  .attr('class', 'line')  
-										  .attr('d', d => line(d.results[0].data[0]))
-										  .style('stroke', (d, i) => color(i))
-										  .style('opacity', lineOpacity)
-										  .on("mouseover", function(d) {
-										      d3.selectAll('.line')
-															.style('opacity', otherLinesOpacityHover);
-										      d3.selectAll('.circle')
-															.style('opacity', circleOpacityOnLineHover);
-										      d3.select(this)
-										        .style('opacity', lineOpacityHover)
-										        .style("stroke-width", lineStrokeHover)
-										        .style("cursor", "pointer");
-										    })
-										  .on("mouseout", function(d) {
-										      d3.selectAll(".line")
-															.style('opacity', lineOpacity);
-										      d3.selectAll('.circle')
-															.style('opacity', circleOpacity);
-										      d3.select(this)
-										        .style("stroke-width", lineStroke)
-										        .style("cursor", "none");
-										    });
-
-
-										/* Add circles in the line */
-										lines.selectAll("circle-group")
-										  .data(data).enter()
-										  .append("g")
-										  .style("fill", (d, i) => color(i))
-										  .selectAll("circle")
-										  .data(d => d.results[0].data[0]).enter()
-										  .append("g")
-										  .attr("class", "circle")  
-										  .on("mouseover", function(d) {
-										      d3.select(this)     
-										        .style("cursor", "pointer")
-										        .append("text")
-										        .attr("class", "text")
-										        .text(`${d.ratio}`)
-										        .attr("x", d => xScale(d.results[0].data[0].period) + 5)
-										        .attr("y", d => yScale(d.results[0].data[0].ratio) - 10);
-										    })
-										  .on("mouseout", function(d) {
-										      d3.select(this)
-										        .style("cursor", "none")  
-										        .transition()
-										        .duration(duration)
-										        .selectAll(".text").remove();
-										    })
-										  .append("circle")
-										  .attr("cx", d => xScale(d.results[0].data[0].period))
-										  .attr("cy", d => yScale(d.results[0].data[0].ratio))
-										  .attr("r", circleRadius)
-										  .style('opacity', circleOpacity)
-										  .on("mouseover", function(d) {
-										        d3.select(this)
-										          .transition()
-										          .duration(duration)
-										          .attr("r", circleRadiusHover);
-										      })
-										    .on("mouseout", function(d) {
-										        d3.select(this) 
-										          .transition()
-										          .duration(duration)
-										          .attr("r", circleRadius);  
-										      });
-
-
-										/* Add Axis into SVG */
-										var xAxis = d3.axisBottom(xScale).ticks(5);
-										var yAxis = d3.axisLeft(yScale).ticks(5);
-
-										svg.append("g")
-										  .attr("class", "x axis")
-										  .attr("transform", `translate(0, ${height-margin})`)
-										  .call(xAxis);
-
-										svg.append("g")
-										  .attr("class", "y axis")
-										  .call(yAxis)
-										  .append('text')
-										  .attr("y", 15)
-										  .attr("transform", "rotate(-90)")
-										  .attr("fill", "#000")
-										  .text("Total values");
+									//ratio
+									ratio1 = object1[Object.keys(object1)[1]]; 
+									ratio2 = object2[Object.keys(object2)[1]]; 
+									ratio3 = object3[Object.keys(object3)[1]]; 
+									ratio4 = object4[Object.keys(object4)[1]]; 
+									ratio5 = object5[Object.keys(object5)[1]]; 
+									ratio6 = object6[Object.keys(object6)[1]]; 
+									ratio7 = object7[Object.keys(object7)[1]]; 
+									ratio8 = object8[Object.keys(object8)[1]]; 
+									ratio9 = object9[Object.keys(object9)[1]]; 
+									ratio10 = object10[Object.keys(object10)[1]]; 
+									ratio11 = object11[Object.keys(object11)[1]]; 
+									ratio12 = object12[Object.keys(object12)[1]]; 
+									ratio13 = object13[Object.keys(object13)[1]]; 
+									ratio14 = object14[Object.keys(object14)[1]]; 
 									
 									
 									
+									// console
+									
+									console.log(subject1);
+									console.log(subject2);
+									
+									console.log(date1); 
+									console.log(date2); 
+									console.log(date3); 
+									console.log(date4); 
+									console.log(date5); 
+									console.log(date6); 
+									console.log(date7); 
+									
+									console.log(ratio1); 
+									console.log(ratio2); 
+									console.log(ratio3); 
+									console.log(ratio4); 
+									console.log(ratio5); 
+									console.log(ratio6); 
+									console.log(ratio7); 
+									console.log(ratio8); 
+									console.log(ratio9); 
+									console.log(ratio10); 
+									console.log(ratio11); 
+									console.log(ratio12); 
+									console.log(ratio13); 
+									console.log(ratio14); 
+									 
+									// data 꺼내기 끝 
+									
+									
+									
+									// data push 시작 
+								
+									
+									//여기 부터는 그래프 
+									
+									
+									
+new Chart(document.getElementById("line-chart"), {
+  type: 'line',
+  data: {
+    labels: [date1,date2,date3,date4,date5,date6,date7],
+    datasets: [{ 
+        data: [ratio1,ratio2,ratio3,ratio4,ratio5,ratio6,ratio7],
+        label: subject1,
+        borderColor: "#3e95cd",
+        fill: false
+      }, { 
+        data: [ratio8,ratio9,ratio10,ratio11,ratio12,ratio13,ratio14],
+        label: subject2,
+        borderColor: "#8e5ea2",
+        fill: false
+      }
+    ]
+  }
+});
 									}
 									},
 									
@@ -341,35 +404,60 @@ svg {
 										$("input[name^='keywordGroups[']").each(function (index, element) { 
 											if ("" == $.trim($(this).val())) { $(this).prop("disabled", false); } }); } }); }; });
 </script>
+
+
 </head>
-<body style="padding: 50px 50px 50px 50px;">
-	<h1>1. 요청 설정</h1>
+<body>
+ <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="weather.do"> <i class="fas fa-sun"></i> 날씨</a>
+                </li>
+                <li>
+                    <a href="Trend.do"> <i class="fas fa-chart-line"></i> 트렌드 검색</a>
+                </li>
+                <li>
+                    <a href="recommend.do"> <i class="fas fa-check"></i> 오늘의 추천</a>
+                </li>
+            </ul>
+        </nav>
+
+		<!-- 메인 -->
+		<div id="content" style="padding: 0px !important; width:100%;">
+		<!-- 헤드바 -->
+			<nav class="navbar navbar-light amber darken-3">
+			<button type="button" id="sidebarCollapse" class="btn btn-info" style="background-color:#FF8F00 !important; border-color:#FF8F00 !important;">
+				<i class="fas fa-align-justify"></i>
+			</button>
+			<a href="/main.do" style="margin-right:15px;"><i class="fas fa-angle-right" style="color:white;"></i></a>
+			</nav>
+	
+	<div id="main" style="margin:20px 20px 20px 20px;">
 	<form name="serviceAPIDatalabSearchForm"
 		id="serviceAPIDatalabSearchForm" method="post" action=""
 		onsubmit="return false;">
-		<h2>조회 시작 일자 선택</h2>
+		<h4>조회시작 날짜</h4>
 		<p>
 			<input class="form-control" type="text"
 				id="serviceAPIDatalabSearchStartDate" name="startDate"
 				placeholder="조회 시작 기간 선택" value="" readonly="readonly" />
 		</p>
-		<p>&nbsp;</p>
-		<h2>조회 종료 일자 선택</h2>
+		<h4>조회 종료 일자(시작일로부터 7일)</h4>
 		<p>
 			<input class="form-control" type="text"
 				id="serviceAPIDatalabSearchEndDate" name="endDate"
 				placeholder="조회 종료 기간 선택" value="" readonly="readonly" />
 		</p>
-		<p>&nbsp;</p>
-		<h2>구간 단위 선택</h2>
 		<p>
-			<select class="form-control" id="timeUnit" name="timeUnit">
+			<select class="form-control" id="timeUnit" name="timeUnit" style="display:none;">
 				<option value="date">일간</option>
 				<option value="week">주간</option>
 				<option value="month">월간</option>
 			</select>
 		</p>
-		<h2>검색어 입력</h2>
+		<h4>검색어(2개까지 가능)</h4>
 		<table class="table table-bordered" id="serviceAPIDatalabSearchTable">
 			<thead>
 				<tr>
@@ -380,17 +468,14 @@ svg {
 			</thead>
 			<tbody>
 				<tr>
-					<td><input class="form-control" type="text"
+					<td><input class="form-control" type="text"style="margin: 3px 0px 0px 0px;"
 						name="keywordGroups[][groupName]" placeholder="주제어 입력" value="" />
 					</td>
 					<td><input class="form-control"
-						style="margin: 0px 0px 10px 0px;" type="text"
-						name="keywordGroups[][keywords][]" placeholder="검색어1 입력" value="" />
-						<input class="form-control" style="margin: 0px 0px 10px 0px;"
-						type="text" name="keywordGroups[][keywords][]"
-						placeholder="검색어2 입력" value="" />
+						style="margin: 3px 0px 0px 0px;" type="text"
+						name="keywordGroups[][keywords][]" placeholder="주제어와 동일" value="" />
 					</td>
-					<td style="text-align: center;">
+					<td style="text-align: center; display:flex;">
 						<button class="btn btn-primary serviceAPIDatalabSearchPlus"
 							type="button">추가</button>&nbsp;
 						<button class="btn btn-primary serviceAPIDatalabSearchMinus"
@@ -400,23 +485,36 @@ svg {
 			</tbody>
 		</table>
 	</form>
-	<p>&nbsp;</p>
 	<p>
-		<button class="btn btn-primary" type="button"
-			onclick="$.serviceAPIDatalabSearch();">통합 검색어 트렌드</button>
+		<button class="btn btn-primary" type="button" style="width:100%;"
+			onclick="$.serviceAPIDatalabSearch();">검색</button>
 	</p>
-	<P>&nbsp;</P>
-	<p>&nbsp;</p>
-	<h1>2. 응답 결과</h1>
-	<p>
-		<textarea class="form-control" style="width: 100%" rows="10"
-			id="serviceAPIDatalabSearchResponseCode"
-			name="serviceAPIDatalabSearchResponseCode"></textarea>
-	</p>
-	<p>&nbsp;</p>
-	<div id="serviceAPIDatalabSearchResponsePrismCode"></div>
-	<p>&nbsp;</p>
-	<div id="chart"></div>
-</body>
+	<canvas id="line-chart" width="800" height="450"></canvas>
+	</div>
+	    <div class="overlay"></div>
+</div>
 
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="/resources/js/d3.v3.min.js"></script> 
+  <script type="text/javascript"> // 사이드바 스크립트
+        $(document).ready(function () {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+            $('#dismiss, .overlay').on('click', function () {
+                $('#sidebar').removeClass('active');
+                $('.overlay').removeClass('active');
+            });
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').addClass('active');
+                $('.overlay').addClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+        });
+    </script>
+
+
+    </body>
+      
 </html>

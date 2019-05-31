@@ -1,6 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@page import="poly.dto.UserDTO"%>
+<%
+    	UserDTO uDTO=(UserDTO)session.getAttribute("uDTO");
+    %>
+    
+    <%
+    
+    String usr_id = "";
+    
+    try {
+    	
+    	usr_id = (String) session.getAttribute("usr_id");
+    	usr_id.length();
+    	
+    }catch(NullPointerException e) {
+    	usr_id = "";
+    }
+    
+    %>
 <html>
 
 <!--  ------------------------------헤드 시작-------------------------------- -->
@@ -63,6 +82,27 @@
   	<div style="margin-top:80px;">
   	<center>
   		<ul style="list-style: none; color:white; padding-left:0px;">
+  		
+  		<%
+  			if (usr_id.length() > 0) {
+  		%>
+  		
+  		<li >
+  				<a href="/main" data-toggle="modal" data-target="#myModal">Main</a>
+  			</li>
+  			<li>
+  				<a href="faq.do">LogOut</a>
+  			</li>
+  			<li>
+  				<a href="createaccount.do">MyInfo</a>
+  			</li>
+  		
+  			
+  			
+  			<%
+  			} else {
+  			%>
+  			
   			<li >
   				<a href="#modal fade" data-toggle="modal" data-target="#myModal">Login</a>
   			</li>
@@ -72,14 +112,19 @@
   			<li>
   				<a href="createaccount.do">Join</a>
   			</li>
+  			
+  			<%
+  			}
+  			%>
+  			
   		</ul>
   		
-  		<a style="border:1px solid white; background-color:black; padding : 5px; margin-top:100px;">
-  			<!-- <p style="color:white; margin-bottom:0px;">what is it?</p> --> what is it?
+  		<a href="#" style="border:1px solid white; background-color:black; padding : 5px; margin-top:100px;">
+  			what is it?
   		</a>
   		</center>
   	</div>
-		<form>
+		<form action="/user/loginProc.do" method="post" id="submitForm">
 			<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 				aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-dialog">
@@ -91,20 +136,20 @@
 						<div class="modal-body">
 							<div class="col">
 								<div class="md-form mt-0">
-									<input type="text" class="form-control" placeholder="ID">
+									<input type="text" name="usr_id" class="form-control" placeholder="ID">
 								</div>
 							</div>
 
 							<div class="col">
 								<div class="md-form mt-0">
-									<input type="text" class="form-control" placeholder="Password">
+									<input type="text" name="usr_password" class="form-control" placeholder="Password">
 								</div>
 							</div>
 
 						</div>
 						<div class="modal-footer" style="border-top: 0px solid;">
 							<center>
-								<button type="button" class="btn btn-primary" id="myButtons1"
+								<button type="submit" class="btn btn-primary" id="myButtons1"
 									style="margin-right: 120px;">로그인</button>
 							</center>
 						</div>
@@ -131,6 +176,17 @@
      $('#myModal').modal('hide')
         });
     </script>
+    
+<script type="text/javascript">
+function check(){ 
+	 var usr_id = document.getElementById('usr_id');
+	 var usr_password = document.getElementById('usr_password');
+	 
+	 $('#submitForm').submit();
+  
+}
+  
+  </script>
 
         <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

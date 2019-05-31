@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@page import="poly.dto.UserDTO"%>
+<%
+    	UserDTO uDTO=(UserDTO)session.getAttribute("uDTO");
+    %>
 <html>
 
 <!--  ------------------------------헤드 시작-------------------------------- -->
@@ -118,16 +122,13 @@
         <nav id="sidebar">
             <ul class="list-unstyled components">
                 <li>
-                    <a href="#"> <i class="fas fa-sun"></i> 날씨</a>
+                    <a href="weather.do"> <i class="fas fa-sun"></i> 날씨</a>
                 </li>
                 <li>
-                    <a href="#"> <i class="fas fa-chart-line"></i> 트렌드 검색</a>
+                    <a href="Trend.do"> <i class="fas fa-chart-line"></i> 트렌드 검색</a>
                 </li>
                 <li>
-                    <a href="#"> <i class="fas fa-check"></i> 오늘의 추천</a>
-                </li>
-                 <li>
-                    <a href="#"> <i class="far fa-grin"></i> 오늘의 기분</a>
+                    <a href="recommend.do"> <i class="fas fa-check"></i> 오늘의 추천</a>
                 </li>
             </ul>
         </nav>
@@ -139,7 +140,7 @@
          <button type="button" id="sidebarCollapse" class="btn btn-info" style="background-color:#FF8F00 !important; border-color:#FF8F00 !important;">
             <i class="fas fa-align-justify"></i>
          </button>
-         <a href="main.do" style="margin-right:15px;"><i class="fas fa-angle-right" style="color:white;"></i></a>
+         <a href="/main.do" style="margin-right:15px;"><i class="fas fa-angle-right" style="color:white;"></i></a>
          </nav>
       
       <!-- 현재 날씨! -->

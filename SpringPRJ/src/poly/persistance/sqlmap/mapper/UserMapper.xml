@@ -7,7 +7,6 @@
 	<insert id="insertUser" parameterType="UserDTO">
 		INSERT INTO USR_TABLE
 		(
-			USR_NO,
 			USR_ID,
 			USR_PASSWORD,
 			USR_NAME,
@@ -17,7 +16,6 @@
 		)
 		VALUES
 		(
-			(select *from (select max(seq)+1 from usr_table) next),
 			#{usr_id},
 			#{usr_password},
 			#{usr_name},
@@ -28,58 +26,11 @@
 	</insert>
 	
 	<select id="login" parameterType="UserDTO" resultType="UserDTO">
-			SELECT 
-				USR_SEQ_NO as usr_seq_no,
-         		USR_ID as usr_id,
-         		PASSWORD as password,
-         		USR_NAME as usr_name,
-       			USR_NICKNAME as usr_nickname,
-        		USR_BIRTHDATE as usr_birthdate
-      		FROM USER_INFO
-      		WHERE USR_ID=#{usr_id}  AND PASSWORD=#{password}
+			SELECT  *
+      		FROM USR_TABLE
+      		WHERE USR_ID=#{usr_id}  AND USR_PASSWORD=#{usr_password}
       		
 	</select>
-	
-	<select id="findid" parameterType="UserDTO" resultType="UserDTO">
-			SELECT
-				USR_SEQ_NO as usr_seq_no,
-				USR_ID as usr_id,
-				USR_NAME as usr_name,
-				USR_BIRTHDATE as usr_birthdate
-			FROM USER_INFO
-			WHERE USR_NAME=#{usr_name}  AND USR_BIRTHDATE=#{usr_birthdate}
-	</select>
-	
-
-	<select id="findpw" parameterType="UserDTO" resultType="UserDTO">
-			SELECT
-				USR_SEQ_NO as usr_seq_no,
-				USR_ID as usr_id,
-				PASSWORD as password,
-				USR_NAME as usr_name,
-				USR_BIRTHDATE as usr_birthdate
-			FROM USER_INFO
-			WHERE USR_ID=#{usr_id}  AND USR_NAME=#{usr_name}  AND USR_BIRTHDATE=#{usr_birthdate}
-	</select>
-
-
-	<update id="updateUser" parameterType="UserDTO">
-      UPDATE USER_INFO
-         SET 
-		   	USR_ID = #{usr_id},
-			PASSWORD = #{password},
-			USR_NAME = #{usr_name},
-			USR_NICKNAME = #{usr_nickname},
-			USR_BIRTHDATE = #{usr_birthdate}
-       WHERE USR_SEQ_NO = #{usr_seq_no}
-   </update>
-
-
-	<delete id="deleteUser" parameterType="UserDTO">
-		DELETE
-		FROM USER_INFO
-		WHERE USR_SEQ_NO = #{usr_seq_no}
-	</delete>
 
 	<select id="getUserListTotalCount" resultType="java.lang.Integer">
 		SELECT 

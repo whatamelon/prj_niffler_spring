@@ -245,17 +245,14 @@ a#url1.button1:hover, a#url2.button2:hover, a#url3.button3:hover  {
         <!-- Sidebar  -->
         <nav id="sidebar">
             <ul class="list-unstyled components">
-                <li>
-                    <a href="#"> <i class="fas fa-sun"></i> 날씨</a>
-                </li>
-                <li>
-                    <a href="#"> <i class="fas fa-chart-line"></i> 트렌드 검색</a>
-                </li>
-                <li>
-                    <a href="#"> <i class="fas fa-check"></i> 오늘의 추천</a>
-                </li>
                  <li>
-                    <a href="#"> <i class="far fa-grin"></i> 오늘의 기분</a>
+                    <a href="weather.do"> <i class="fas fa-sun"></i> 날씨</a>
+                </li>
+                <li>
+                    <a href="Trend.do"> <i class="fas fa-chart-line"></i> 트렌드 검색</a>
+                </li>
+                <li>
+                    <a href="recommend.do"> <i class="fas fa-check"></i> 오늘의 추천</a>
                 </li>
             </ul>
         </nav>
@@ -267,7 +264,7 @@ a#url1.button1:hover, a#url2.button2:hover, a#url3.button3:hover  {
          <button type="button" id="sidebarCollapse" class="btn btn-info" style="background-color:#FF8F00 !important; border-color:#FF8F00 !important;">
             <i class="fas fa-align-justify"></i>
          </button>
-         <a href="main.do" style="margin-right:15px;"><i class="fas fa-angle-right" style="color:white;"></i></a>
+         <a href="/main.do" style="margin-right:15px;"><i class="fas fa-angle-right" style="color:white;"></i></a>
          </nav>
       
       <!-- 현재 날씨! -->

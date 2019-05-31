@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@page import="poly.dto.UserDTO"%>
+<%
+    	UserDTO uDTO=(UserDTO)session.getAttribute("uDTO");
+    %>
 <html>
 
 <!--  ------------------------------헤드 시작-------------------------------- -->
@@ -66,7 +70,7 @@
 	.card{
 		margin : 5px 50px 60px 50px;
 		width : 75%;
-		height : 150px;
+		height : 500px;
 	}
 	p{
     margin: 10px 0px 0px 40px;
@@ -87,13 +91,10 @@
                     <a href="user/weather.do"> <i class="fas fa-sun"></i> 날씨</a>
                 </li>
                 <li>
-                    <a href="#"> <i class="fas fa-chart-line"></i> 트렌드 검색</a>
+                    <a href="user/Trend.do"> <i class="fas fa-chart-line"></i> 트렌드 검색</a>
                 </li>
                 <li>
                     <a href="user/recommend.do"> <i class="fas fa-check"></i> 오늘의 추천</a>
-                </li>
-                 <li>
-                    <a href="#"> <i class="far fa-grin"></i> 오늘의 기분</a>
                 </li>
             </ul>
         </nav>
@@ -108,21 +109,12 @@
 			<a href="user/intro.do" style="margin-right:15px;"><i class="fas fa-angle-right" style="color:white;"></i></a>
 			</nav>
 		
-		<!-- 기분을 알려주세요! -->
-		<p>오늘의 기분을 알려주세요!</p>
+		<!-- 핫 이슈! -->
+		<p>현재 핫 이슈!</p>
 		<div class="card" id="feel">
-			<p id="sibal1" onClick="sad"><i class="far fa-dizzy"></i></p>
-			<p id="sibal2" onClick="sad"><i class="far fa-tired"></i></p>
-			<p id="sibal3" onClick="sad"><i class="far fa-meh"></i></p>
-			<p id="sibal4" onClick="sad"><i class="far fa-smile-wink"></i></p>
-			<p id="sibal5" onClick="sad"><i class="far fa-grin-squint-tears"></i></p>
+		<p style="width: 100px; word-break: keep-all; margin-left: 80px; padding-top:20px; text-align: center;"><%@include file = "crawling.jsp" %></p>
 		</div>
-			
-		<!-- 오늘의 추천 메인 페이지에 하나! -->
-		<p>오늘의 추천을 만나보세요!</p>
-		<div class="card" id="link">
-			
-		</div>
+		
 		
 		</div>
 		
@@ -159,71 +151,7 @@
     </script>
     
     <script type="text/javascript">
-        var sibal1 = document.getElementById('sibal1');
-        var sibal2 = document.getElementById('sibal2');
-        var sibal3 = document.getElementById('sibal3');
-        var sibal4 = document.getElementById('sibal4');
-        var sibal5 = document.getElementById('sibal5');
-        var fuck1 = document.getElementById('fuck1');
-        var fuck2 = document.getElementById('fuck2');
-        var fuck3 = document.getElementById('fuck3');
-        var fuck4 = document.getElementById('fuck4');
-        var fuck5 = document.getElementById('fuck5');
-          
-        sibal1.onclick= function(){
-          sibal1.classList.remove('active');
-          sibal2.classList.add('active');
-          sibal3.classList.add('active');
-          sibal4.classList.add('active');
-          sibal5.classList.add('active');
-          fuck1.classList.toggle('active');
-          fuck2.classList.add('active');
-          fuck4.classList.add('active');
-         
-        }
-        sibal2.onclick= function(){
-          sibal1.classList.add('active');
-          sibal2.classList.remove('active');
-          sibal3.classList.add('active');
-          sibal4.classList.add('active');
-          sibal5.classList.add('active');
-          fuck4.classList.add('active');
-         
-        }
-        sibal3.onclick= function(){
-          sibal1.classList.add('active');
-          sibal2.classList.add('active');
-          sibal3.classList.remove('active');
-          sibal4.classList.add('active');
-          sibal5.classList.add('active');
-          fuck2.classList.add('active');
-          fuck3.classList.remove('active');
-          fuck4.classList.add('active');
-         
-        }
-        sibal4.onclick= function(){
-          sibal1.classList.add('active');
-          sibal2.classList.add('active');
-          sibal3.classList.add('active');
-          sibal4.classList.remove('active');
-          sibal5.classList.add('active');
-          fuck2.classList.add('active');
-         
-        }
-        sibal5.onclick= function(){
-          sibal1.classList.add('active');
-          sibal2.classList.add('active');
-          sibal3.classList.add('active');
-          sibal4.classList.add('active');
-          sibal5.classList.remove('active');
-           fuck1.classList.add('active');
-          fuck2.classList.add('active');
-          fuck3.classList.add('active');
-          fuck4.classList.add('active');
-          fuck5.classList.add('active');
-         
-        }
-      }
+      
     </script>
 
 	<!--  Google Maps Plugin    -->

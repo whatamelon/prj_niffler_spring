@@ -45,35 +45,5 @@ public class UserService implements IUserService {
 	public UserDTO login(UserDTO uDTO) throws Exception {
 		return userMapper.login(uDTO);
 	}
-
-	@Override
-	public UserDTO findid(UserDTO uDTO) throws Exception {
-		return userMapper.findid(uDTO);
-	}
-
-	@Override
-	public UserDTO findpw(UserDTO uDTO) throws Exception {
-		return userMapper.findpw(uDTO);
-	}
-
-	
-	@Override
-	public int updateUser(UserDTO uDTO) throws Exception {
-		System.out.println("********************************************************************************");
-		System.out.println("usr_seq_no : " + uDTO.getUsr_no());
-		System.out.println("usr_id : " + uDTO.getUsr_id());
-		System.out.println("usr_name : " + uDTO.getUsr_name());
-		System.out.println("usr_age : " + uDTO.getUsr_age());
-		System.out.println("usr_password : " + uDTO.getUsr_password());
-		System.out.println("usr_job : " + uDTO.getUsr_job());
-		System.out.println("usr_hobby : " + uDTO.getUsr_hobby());
-		return userMapper.updateUser(uDTO);
-	}
-
-	@Override
-	public int deleteUser(String usr_no) throws Exception {
-		return userMapper.deleteUser(usr_no);
-	}
-
 	
 }

@@ -140,11 +140,11 @@
 			<button type="button" id="sidebarCollapse" class="btn btn-info" style="background-color:#FF8F00 !important; border-color:#FF8F00 !important;">
 				<i class="fas fa-align-justify"></i>
 			</button>
-			<a href="intro.do" style="margin-right:15px;"><i class="fas fa-angle-right" style="color:white;"></i></a>
+			<a href="/main.do" style="margin-right:15px;"><i class="fas fa-angle-right" style="color:white;"></i></a>
 			</nav>
 		
 		
-		<form>
+		<form action="/user/sendFeel.do" method="post" id="submitForm">
 		
 		<p>오늘의 기분을 알려주세요!</p>
 		
@@ -153,6 +153,7 @@
 		<span style="display:flex;"><p>오늘의 날씨 : </p><p id=main style="margin-left:20px;"></p></span>
 		
 		<div class="card" id="feel">
+			<input type="checkbox" style="color:#EF5350;" >
 			<a href="javascript:void(0);" onclick="check1" style="color:#EF5350;" class="1"><i class="far fa-dizzy fa-2x transform1"  id="today"></i></a>
 			<a href="javascript:void(0);" onclick="check2" style="color:#FFD54F;" class="2"><i class="far fa-frown fa-2x transform2"  id="today"></i></a>
 			<a href="javascript:void(0);" onclick="check3" style="color:#81C784;" class="3"><i class="far fa-meh fa-2x transform3" id="today"></i></a>
@@ -162,14 +163,14 @@
 		</div>
 		
 		<button class="btn btn-primary" type="button" style="width:300px; margin-left:40px; border-radius:30px;"
-			onclick="$.sendFeelTimeWeather();">확인!</button>
+			onclick="check();">확인!</button>
 		
 		</form>
 		
 	</div>
     <div class="overlay"></div>
     
-    <script type="text/javascript">
+    <script type="text/javascript"> // emoji action
     $("i#today.far.fa-dizzy.fa-2x.transform1").click(function() {
     	  $('.transform1').toggleClass('transform-active');
     	});
@@ -191,11 +192,40 @@
   	});
     </script>
     
-    <script type="text/javascript">
-    	function check1() {
-    		
-    	}
-	</script>
+    <script type="text/javascript"> // send to back-end check1
+    
+    function check(){ 
+
+   	 var date = document.getElementById('time-result');
+   	 var weather = document.getElementById('main');
+   	 var check1=document.getElementById('check1');
+   	 
+   	 if( !check1 ){ 
+   		 value = 1
+   		 }
+   	 
+		 }
+
+   	 
+   	 $('#submitForm').submit();
+   }
+
+   	 
+    </script>
+    
+    <script type="text/javascript"> // send to back-end check2
+    function check(){ 
+
+   	 var date = document.getElementById('time-result');
+   	 var weather = document.getElementById('main');
+   	 var check2=document.getElementById('check2');
+  	 
+   	 if( check2.value == ){ 
+   		  return 2
+   		 }
+    }
+    
+    </script>
     
     
     <script type="text/javascript">

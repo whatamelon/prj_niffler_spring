@@ -153,7 +153,6 @@
 		<span style="display:flex;"><p>오늘의 날씨 : </p><p id=main style="margin-left:20px;"></p></span>
 		
 		<div class="card" id="feel">
-			<input type="checkbox" style="color:#EF5350;" >
 			<a href="javascript:void(0);" onclick="check1" style="color:#EF5350;" class="1"><i class="far fa-dizzy fa-2x transform1"  id="today"></i></a>
 			<a href="javascript:void(0);" onclick="check2" style="color:#FFD54F;" class="2"><i class="far fa-frown fa-2x transform2"  id="today"></i></a>
 			<a href="javascript:void(0);" onclick="check3" style="color:#81C784;" class="3"><i class="far fa-meh fa-2x transform3" id="today"></i></a>
@@ -202,7 +201,7 @@
    	 
    	 if( !check1 ){ 
    		 value = 1
-   		 }
+   		 
    	 
 		 }
 
@@ -222,7 +221,8 @@
   	 
    	 if( check2.value == ){ 
    		  return 2
-   		 }
+   		 } 
+   	 $('#submitForm').submit();
     }
     
     </script>

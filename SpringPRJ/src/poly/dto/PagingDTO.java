@@ -30,13 +30,11 @@ public class PagingDTO {
 }
 
 /*package poly.dto;
-
 *//**
  * @author 
  * @version 1.1 페이징 DTO
  *//*
 public class PagingDTO {
-
 	private int page_num; //현재 페이지 번호
 	private int total_count; // total row count
 	private int page_count; // 페이지별 출력될 row수.

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- JAVA와 연결할 Mapper 파일 설정 -->
+<mapper namespace="poly.persistance.mapper.FeelMapper">
+	<!-- insert, update, delete, select -->
+	
+	<insert id="insertFeel" parameterType="FeelDTO">
+		INSERT INTO FEEL_TABLE
+		(
+			feel_val,
+			feel_date,
+			FEEL_WEATHER
+		)
+		VALUES
+		(
+			#{feel_val},
+			NOW(),
+			#{feel_weather}
+		)
+	</insert>
+	
+		<select parameterType="java.lang.String" id="getDate" resultType="FeelDTO">
+		SELECT 
+		max(feel_date) as feel_date
+		FROM FEEL_TABLE
+	</select>
+
+</mapper>

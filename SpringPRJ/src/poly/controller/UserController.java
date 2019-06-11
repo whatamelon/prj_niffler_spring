@@ -18,8 +18,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.mysql.jdbc.StringUtils;
 
-import poly.dto.PagingDTO;
 import poly.dto.UserDTO;
+import poly.dto.FeelDTO;
+import poly.service.IFeelService;
 import poly.service.IUserService;
 import poly.util.CmmUtil;
 
@@ -28,13 +29,14 @@ import poly.util.CmmUtil;
 public class UserController {
 	private Logger log = Logger.getLogger(this.getClass());
 	
-
-	
-	//--------------------------------------------------회원가입 시작----------------------------------------------------------------------------------------
 	
 @Autowired
 		private IUserService userService;
+@Autowired
+		private IFeelService feelService;
 
+
+//----------------------------------------------------------------인트로페이지------------------------------------------------------------------------
 
 @RequestMapping(value="/user/intro")
 public String intro (HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception{
@@ -42,17 +44,31 @@ public String intro (HttpServletRequest request, HttpServletResponse response, M
 	return "/user/intro";
 }
 
+//----------------------------------------------------------------로그아웃리다이렉션매칭------------------------------------------------------------------------
+
+@RequestMapping(value="/user/logout")
+public String logout (HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception{
+
+	return "/user/logout";
+}
+
+//----------------------------------------------------------------faq페이지------------------------------------------------------------------------
+
 @RequestMapping(value="/user/faq")
 public String faq (HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception{
 
 	return "/user/faq";
 }
 	
+//----------------------------------------------------------------날씨페이지------------------------------------------------------------------------
+
 @RequestMapping(value="/user/weather")
 public String weather (HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception{
 
 	return "/user/weather";
 }
+
+//----------------------------------------------------------------추천페이지------------------------------------------------------------------------
 
 @RequestMapping(value="/user/recommend")
 public String recommend (HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception{
@@ -60,11 +76,15 @@ public String recommend (HttpServletRequest request, HttpServletResponse respons
 	return "/user/recommend";
 }
 
+//----------------------------------------------------------------트렌드 페이지------------------------------------------------------------------------
+
 @RequestMapping(value="/user/Trend")
 public String Trend (HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception{
 
 	return "/user/Trend";
 }
+
+//----------------------------------------------------------------핫이슈 크롤링------------------------------------------------------------------------
 
 @RequestMapping(value="/user/crawling")
 public String crawling (HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception{
@@ -72,11 +92,49 @@ public String crawling (HttpServletRequest request, HttpServletResponse response
 	return "/user/crawling";
 }
 
+//----------------------------------------------------------------기분페이지------------------------------------------------------------------------
+
 @RequestMapping(value="/user/feel")
 public String feel (HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception{
 
+	log.info("getDate");
+	
+	FeelDTO fDTO = feelService.getDate();
+	
+	model.addAttribute("fDTO",fDTO);
+	
+	log.info("feel_date  : " + fDTO.gettFeel_date());
+	
 	return "/user/feel";
 }
+
+//----------------------------------------------------------------기분 보내기 시작------------------------------------------------------------------------
+
+@RequestMapping(value="/user/sendFeel")
+public String sendFeel (HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception{
+	log.info("sendFeelStart");
+	String feel_no = request.getParameter("feel_no");
+	String feel_val = request.getParameter("feelcheck");
+	String feel_weather = request.getParameter("feel_weather");
+	
+	log.info("feel_val :" + feel_val);
+	log.info("feel_weather :" + feel_weather);
+	
+	FeelDTO fDTO = new FeelDTO();
+	
+	fDTO.setFeel_no(feel_no);
+	fDTO.setFeel_val(feel_val);
+	fDTO.setFeel_weather(feel_weather);
+	
+	int result = feelService.insertFeel(fDTO);
+	
+	return "/user/feel";
+}
+
+
+//----------------------------------------------------------------기분 보내기 끝------------------------------------------------------------------------
+
+//----------------------------------------------------------------회원가입 시작------------------------------------------------------------------------
 
 	@RequestMapping(value="/user/createaccount")
 	public String createaccount (HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception{
@@ -158,24 +216,5 @@ public String feel (HttpServletRequest request, HttpServletResponse response, Mo
 	}
 	
 	//--------------------------------------------------로그인proc 끝----------------------------------------------------------------------------------------
-	
-	//--------------------------------------------------세션접속된 홈페이지 시작---------------------------------------------------------------------------------------
-	@RequestMapping(value="/user/index1")
-	public String index1 (HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception{
-	
-		log.info("test");
-		return "/user/index1";
+
 }
-	//--------------------------------------------------세션접속된 홈페이지 끝---------------------------------------------------------------------------------------
-	
-	
-	//--------------------------------------------------세션접속된 홈페이지 시작---------------------------------------------------------------------------------------
-	@RequestMapping(value="/user/admin")
-	public String admin (HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception{
-	
-		log.info("test");
-		return "/user/admin";
-}
-}
-	//--------------------------------------------------세션접속된 홈페이지 끝---------------------------------------------------------------------------------------
-	

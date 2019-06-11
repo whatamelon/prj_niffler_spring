@@ -117,7 +117,6 @@ public interface NoticeMapper {
    public int compareUsrSeqNo(NoticeDTO nDTO) throws Exception;
    
 /*   public String selectPost(NoticeDTO nDTO) throws Exception;
-
    public int gogoKorean(String result1) throws Exception;*/
    
 }

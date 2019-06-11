@@ -56,7 +56,7 @@
       
     		<div>
               <div class="card-body">
-                <form  action="/user/createAccountProc.do" method="post" id="submitForm">
+                <form  action="/user/createAccountProc.do" method="post" id="submitForm"> <!-- 자바스크립트의 값들을 받아서 post로 백단에 넘김 -->
                   <div class="row">
                     <div class="col-md-5 pr-1">
                       <div class="md-form mt-0">
@@ -133,7 +133,7 @@
 </body>
 
 <script>
-
+ // button에서 받은 함수로 시작!
 function check(){ 
 
 	 var usr_password = document.getElementById('pwd_ck');
@@ -141,7 +141,7 @@ function check(){
 	 var name=document.getElementById('usr_name');
 	 var usr_age=document.getElementById('usr_age');
 	 
-	 if(usr_password.value.length<8) { 
+	 if(usr_password.value.length<8) {  
 		 alert('비밀번호는 8자 이상 20자 이하입니다.'); 
 		 pwd.focus(); 
 		 return false; 
@@ -170,7 +170,7 @@ function check(){
 		 return false; 
 		 } 
 	 
-	 $('#submitForm').submit();
+	 $('#submitForm').submit(); //form으로 보내기~
 }
 
 	 

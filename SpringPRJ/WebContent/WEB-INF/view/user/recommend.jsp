@@ -275,33 +275,70 @@ a#url1.button1:hover, a#url2.button2:hover, a#url3.button3:hover  {
          
          <div class="card-carousel" style="height:500px !important;">
 
-				<div id="slider">
+				 <div id="slider">
 					<a href="#" class="control_next blinking"><i class="fas fa-angle-right" style="color:white;"></i></a>
 					<a href="#" class="control_prev blinking"><i class="fas fa-angle-left" style="color:white;"></i></a>
+					
 					<ul>
+					
 						<li style="width:340px !important; height:400px;">
-							<div>
+						
+							<div class="my-card" id="card1">
+         	  					<img src="/resources/img/default-avatar.png" id="preview1"/>
+              					<h2 id="title1"></h2>
+              					<h5 id="description1"></h5>
+              				</div>
+              				<div>
+              					<a href=https://www.google.com id="url1" target="_blank">바로가기</a>
+          					</div>
+						
+						
+							<!-- <div>
 								  <img src="/resources/img/default-avatar.png" id="preview1" />
-             					  <h2> <!-- id="title1"> -->Example</h2>
-              					  <h5> <!-- id="description1"> -->너와 함께한 시간 모두 눈부셨다. 날이 좋아서 날이 좋지 않아서 날이 적당해서 모든 날이 좋았다. 그리고
+             					  <h2> id="title1">Example</h2>
+              					  <h5> id="description1">너와 함께한 시간 모두 눈부셨다. 날이 좋아서 날이 좋지 않아서 날이 적당해서 모든 날이 좋았다. 그리고
 						무슨 일이 벌어져도 니 잘못이 아니다</h5>
 							</div>
 							<div>
 									<a href=self id="url1" target="_blank" class="button1">바로가기</a>
-							</div>
+							</div> -->
 						</li>
+						
 						<li style="width: 340px !important;height:400px; ">
-							<div class="my-card" id="card2">
+						
+						 <div class="my-card" id="card2">
+         	  <img src="/resources/img/default-avatar.png" id="preview2"/>
+              <h2 id="title2"></h2>
+              <h5 id="description2"></h5>
+              </div>
+              <div>
+              <a href=https://blog.naver.com/politech_cjs/221559223789 id="url2" target="_blank">바로가기</a>
+          </div>
+						
+						
+					<!-- 		<div class="my-card" id="card2">
 								<img src="/resources/img/default-avatar.png" id="preview2" />
 								<h2 id="title2"></h2>
 								<h5 id="description2"></h5>
 							</div>
 							<div>
 								<a href=self id="url2" target="_blank" class="button2">바로가기</a>
-							</div>
+							</div> -->
+							
 						</li>
+						
 						<li style="width: 340px !important;height:400px;">
-							<div class="my-card" id="card3">
+						
+						<div class="my-card" id="card3">
+         	  				<img src="/resources/img/default-avatar.png" id="preview3"/>
+              				<h2 id="title3"></h2>
+              				<h5 id="description3"></h5>
+              			</div>
+              			<div>
+              				<a href=https://onezero.medium.com/to-revive-the-mac-apple-wants-to-kill-electron-154873336e78 id="url3" target="_blank">바로가기</a>
+          				</div> 
+						
+				<!-- 			<div class="my-card" id="card3">
 								<img src="/resources/img/default-avatar.png" id="preview3" />
 								<h2 id="title3"></h2>
 								<h5 id="description3"></h5>
@@ -309,35 +346,13 @@ a#url1.button1:hover, a#url2.button2:hover, a#url3.button3:hover  {
 							<div>
 								<a href=self id="url3" target="_blank" class="button3">바로가기</a>
 							</div>
+							 -->
 						</li>
 
 					</ul>
-				</div>
-
-
-
-
-				<!--   <div class="my-card" id="card1">
-         	  <img src="/resources/img/default-avatar.png" id="preview1"/>
-              <h2 id="title1"></h2>
-              <h5 id="description1"></h5>
-              <a href=self id="url1" target="_blank">바로가기</a>
-          </div>
+				</div> 
           
-          <div class="my-card" id="card2">
-         	  <img src="/resources/img/default-avatar.png" id="preview2"/>
-              <h2 id="title2"></h2>
-              <h5 id="description2"></h5>
-              <a href=self id="url2" target="_blank">바로가기</a>
-          </div>
-          
-          <div class="my-card" id="card3">
-         	  <img src="/resources/img/default-avatar.png" id="preview3"/>
-              <h2 id="title3"></h2>
-              <h5 id="description3"></h5>
-              <a href=self id="url3" target="_blank">바로가기</a>
-          </div> -->
-         <!--  
+   <!--         
           <div class="my-card" id="card1">
           	<div>
          	  <img src="/resources/img/default-avatar.png"/>
@@ -346,8 +361,8 @@ a#url1.button1:hover, a#url2.button2:hover, a#url3.button3:hover  {
 						무슨 일이 벌어져도 니 잘못이 아니다.</h5>
 			</div>
 					<div><a href="#" target="_blank">바로가기</a></div>
-          </div> -->
-          
+          </div>
+           -->
 
           
       </div>
@@ -358,7 +373,9 @@ a#url1.button1:hover, a#url2.button2:hover, a#url3.button3:hover  {
       
 
     <div class="overlay"></div>
+    
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
     <!-- Popper.JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <!-- Bootstrap JS -->
@@ -432,7 +449,7 @@ a#url1.button1:hover, a#url2.button2:hover, a#url3.button3:hover  {
 
     </script>
 
-<!-- <script type="text/javascript">
+<script type="text/javascript">
 
 	var target = 'https://www.google.com';
 	
@@ -459,7 +476,7 @@ a#url1.button1:hover, a#url2.button2:hover, a#url3.button3:hover  {
    
    <script type="text/javascript">
 
-	var target = 'https://www.naver.com/';
+	var target = 'https://blog.naver.com/politech_cjs/221559223789';
 	
 	$.ajax({
 	    url: "http://api.linkpreview.net",
@@ -484,7 +501,7 @@ a#url1.button1:hover, a#url2.button2:hover, a#url3.button3:hover  {
    
    <script type="text/javascript">
 
-	var target = 'https://www.youtube.com/';
+	var target = 'https://onezero.medium.com/to-revive-the-mac-apple-wants-to-kill-electron-154873336e78';
 	
 	$.ajax({
 	    url: "http://api.linkpreview.net",
@@ -505,7 +522,7 @@ a#url1.button1:hover, a#url2.button2:hover, a#url3.button3:hover  {
 	    	console.log(e.responseText);
 	    }
 	});
-   </script> -->
+   </script>
    
  <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

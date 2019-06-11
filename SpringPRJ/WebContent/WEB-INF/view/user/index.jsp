@@ -109,7 +109,9 @@
 			<button type="button" id="sidebarCollapse" class="btn btn-info" style="background-color:#FF8F00 !important; border-color:#FF8F00 !important;">
 				<i class="fas fa-align-justify"></i>
 			</button>
-			<a href="user/intro.do" style="margin-right:15px;"><i class="fas fa-angle-right" style="color:white;"></i></a>
+			
+			
+			<button onclick="location.href = 'user/logout.do' ">로그아웃</button>
 			</nav>
 		
 		<!-- 핫 이슈! -->

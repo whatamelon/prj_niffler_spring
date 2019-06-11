@@ -22,19 +22,18 @@
 <body>
 
 <%
-String string = "";
-String link = "https://www.naver.com/";
-Document doc = Jsoup.connect(link).get();
+String string = ""; //string 선언
+String link = "https://www.naver.com/"; //link받아오기
+Document doc = Jsoup.connect(link).get(); //link 적용
 Elements rowElements = doc.select("div.area_hotkeyword.PM_CL_realtimeKeyword_base > div.ah_list.PM_CL_realtimeKeyword_list_base > ul.ah_l > li.ah_item > a.ah_a > span.ah_k");
-
-for(Element row : rowElements)
+// 태그 선택하기
+for(Element row : rowElements) // for 문 돌리기
 {
-	string += row.text() + "\n";
+	string += row.text() + "\n"; // row.text를 한 줄씩 끊음
 }
-/* System.out.println(string); */
 
 %>
 
-<%=string %>
+<%=string %> 
 </body>
 </html>

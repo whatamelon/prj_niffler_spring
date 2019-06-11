@@ -1,25 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@page import="poly.dto.UserDTO"%>
-<%
-    	UserDTO uDTO=(UserDTO)session.getAttribute("uDTO");
-    %>
-    
-    <%
-    
-    String usr_id = "";
-    
-    try {
-    	
-    	usr_id = (String) session.getAttribute("usr_id");
-    	usr_id.length();
-    	
-    }catch(NullPointerException e) {
-    	usr_id = "";
-    }
-    
-    %>
+
 <html>
 
 <!--  ------------------------------헤드 시작-------------------------------- -->
@@ -82,27 +64,7 @@
   	<div style="margin-top:80px;">
   	<center>
   		<ul style="list-style: none; color:white; padding-left:0px;">
-  		
-  		<%
-  			if (usr_id.length() > 0) {
-  		%>
-  		
-  		<li >
-  				<a href="/main" data-toggle="modal" data-target="#myModal">Main</a>
-  			</li>
-  			<li>
-  				<a href="faq.do">LogOut</a>
-  			</li>
-  			<li>
-  				<a href="createaccount.do">MyInfo</a>
-  			</li>
-  		
-  			
-  			
-  			<%
-  			} else {
-  			%>
-  			
+  	
   			<li >
   				<a href="#modal fade" data-toggle="modal" data-target="#myModal">Login</a>
   			</li>
@@ -112,10 +74,6 @@
   			<li>
   				<a href="createaccount.do">Join</a>
   			</li>
-  			
-  			<%
-  			}
-  			%>
   			
   		</ul>
   		

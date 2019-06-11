@@ -1,10 +1,13 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
+<%@page import="poly.dto.FeelDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@page import="poly.dto.UserDTO"%>
+
+
 <%
-    	UserDTO uDTO=(UserDTO)session.getAttribute("uDTO");
-    %>
+   FeelDTO fDTO = (FeelDTO) request.getAttribute("fDTO");
+%>
 <html>
 
 <!--  ------------------------------헤드 시작-------------------------------- -->
@@ -16,7 +19,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   
   <title>
-    Now UI Dashboard by Creative Tim
+    오늘의 기분
   </title>
   
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
@@ -96,17 +99,12 @@
 	background-color:#536DFE;
 	}
 
-
-.transform1,.transform2,.transform3,.transform4,.transform5{
-  -webkit-transition: all 1s ease;  
-  -moz-transition: all 1s ease;  
-  -o-transition: all 1s ease;  
-  -ms-transition: all 1s ease;  
-  transition: all 1s ease;
+input{
+	margin-left:15px;
+	margin-right:15px;
 }
-
-.transform-active {
-  font-size:60px;
+.checkboxdiv{
+	margin-top:20px;
 }
 </style>
 
@@ -143,88 +141,76 @@
 			<a href="/main.do" style="margin-right:15px;"><i class="fas fa-angle-right" style="color:white;"></i></a>
 			</nav>
 		
-		
 		<form action="/user/sendFeel.do" method="post" id="submitForm">
 		
 		<p>오늘의 기분을 알려주세요!</p>
 		
 		<span style="display:flex;"><p>오늘은</p><p id=time-result style="margin-left:20px;"></p><p style="margin-left:20px;">입니다.</p></span>
 		
-		<span style="display:flex;"><p>오늘의 날씨 : </p><p id=main style="margin-left:20px;"></p></span>
+		<%
+		Date from = new Date();
+
+		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+		String to = transFormat.format(from);
+		
+		if(fDTO.gettFeel_date().equals(to)){
+			
+		%>
+		
+		<div>
+		
+		<p>오늘은 기분을 저장했습니다!</p>
+		
+		</div>
+		
+		<%} else { %>
+		
+		
 		
 		<div class="card" id="feel">
-			<a href="javascript:void(0);" onclick="check1" style="color:#EF5350;" class="1"><i class="far fa-dizzy fa-2x transform1"  id="today"></i></a>
-			<a href="javascript:void(0);" onclick="check2" style="color:#FFD54F;" class="2"><i class="far fa-frown fa-2x transform2"  id="today"></i></a>
-			<a href="javascript:void(0);" onclick="check3" style="color:#81C784;" class="3"><i class="far fa-meh fa-2x transform3" id="today"></i></a>
-			<a href="javascript:void(0);" onclick="check4"  style="color:#64B5F6;" class="4"><i class="far fa-smile fa-2x transform4" id="today"></i></a>
-			<a href="javascript:void(0);" onclick="check5" style="color:#9575CD;" class="5"><i class="far fa-laugh-squint fa-2x transform5" id="today"></i></a>
+			<a href="#" style="color:#EF5350;" class="1"><i class="far fa-dizzy fa-2x "  id="today"></i></a>
+			<a href="#"  style="color:#FFD54F;" class="2"><i class="far fa-frown fa-2x "  id="today"></i></a>
+			<a href="#"  style="color:#81C784;" class="3"><i class="far fa-meh fa-2x " id="today"></i></a>
+			<a href="#"  style="color:#64B5F6;" class="4"><i class="far fa-smile fa-2x " id="today"></i></a>
+			<a href="#" style="color:#9575CD;" class="5"><i class="far fa-laugh-squint fa-2x " id="today"></i></a>
+		
+			<div class="checkboxdiv">
+				<input type="radio" name="feelcheck" value="1"  class="check1">
+				<input type="radio" name="feelcheck" value="2"  class="check2">
+				<input type="radio" name="feelcheck" value="3"  class="check3">
+				<input type="radio" name="feelcheck" value="4"  class="check4">
+				<input type="radio" name="feelcheck" value="5"  class="check5">
+				
+				<input type="hidden" name="feel_weather" id="main"  />
+				
+			</div>		
 		
 		</div>
 		
 		<button class="btn btn-primary" type="button" style="width:300px; margin-left:40px; border-radius:30px;"
-			onclick="check();">확인!</button>
+			onclick="check()">확인!</button>
 		
+		
+		<% } %>
 		</form>
 		
 	</div>
+	</div>
     <div class="overlay"></div>
     
-    <script type="text/javascript"> // emoji action
-    $("i#today.far.fa-dizzy.fa-2x.transform1").click(function() {
-    	  $('.transform1').toggleClass('transform-active');
-    	});
-    
-    $("i#today.far.fa-frown.fa-2x.transform2").click(function() {
-  	  $('.transform2').toggleClass('transform-active');
-  	});
-    
-    $("i#today.far.fa-meh.fa-2x.transform3").click(function() {
-  	  $('.transform3').toggleClass('transform-active');
-  	});
-    
-    $("i#today.far.fa-smile.fa-2x.transform4").click(function() {
-  	  $('.transform4').toggleClass('transform-active');
-  	});
-    
-    $("i#today.far.fa-laugh-squint.fa-2x.transform5").click(function() {
-  	  $('.transform5').toggleClass('transform-active');
-  	});
-    </script>
-    
-    <script type="text/javascript"> // send to back-end check1
-    
+    <script type="text/javascript">
+
     function check(){ 
 
-   	 var date = document.getElementById('time-result');
-   	 var weather = document.getElementById('main');
-   	 var check1=document.getElementById('check1');
-   	 
-   	 if( !check1 ){ 
-   		 value = 1
-   		 
-   	 
-		 }
-
-   	 
+    var feel_weather = $( 'input#main' ).text();
+ 
+    $('#main').val(feel_weather);
+   
    	 $('#submitForm').submit();
    }
 
    	 
-    </script>
-    
-    <script type="text/javascript"> // send to back-end check2
-    function check(){ 
-
-   	 var date = document.getElementById('time-result');
-   	 var weather = document.getElementById('main');
-   	 var check2=document.getElementById('check2');
-  	 
-   	 if( check2.value == ){ 
-   		  return 2
-   		 } 
-   	 $('#submitForm').submit();
-    }
-    
     </script>
     
     

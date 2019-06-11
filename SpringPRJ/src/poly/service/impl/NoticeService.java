@@ -6,7 +6,6 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import poly.dto.MemberDTO;
 import poly.dto.NoticeDTO;
 import poly.dto.PagingDTO;
 import poly.persistance.mapper.NoticeMapper;
@@ -410,12 +409,8 @@ public class NoticeService implements INoticeService{
 		public String selectPost(NoticeDTO nDTO) throws Exception{
 			return noticeMapper.selectPost(nDTO);
 		}
-
-
 		@Override
 		public int gogoKorean(String result1) throws Exception{
 			return noticeMapper.gogoKorean(result1);
 		}*/
 }
-
-

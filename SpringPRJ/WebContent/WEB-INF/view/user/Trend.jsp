@@ -216,33 +216,39 @@ svg {
 									
 									function (eventObject) { 
 								
-										if ($("#serviceAPIDatalabSearchTable > tbody > tr").length < 5) { 
+										if ($("#serviceAPIDatalabSearchDiv > #line").length < 2) { 
 											
-											$(this).closest("tr").after($(this).closest("tr").clone().wrapAll("<div/>").parent().html()); } });
+											$(this).closest("#line").after($(this).closest("#line").clone().wrapAll("<div/>").parent().html()); } });
 							
 							$(document).on("click", ".serviceAPIDatalabSearchMinus", function (eventObject) {
 								
-								if ($(this).parents().find("#serviceAPIDatalabSearchTable > tbody > tr").length == 1) {
+								if ($(this).parents().find("#serviceAPIDatalabSearchDiv > #line").length == 1) {
 									
-									$("#serviceAPIDatalabSearchTable > tbody > tr input").val(""); } else { $(this).closest("tr").remove(); } });
+									$("#serviceAPIDatalabSearchDiv > #line input").val(""); } else { $(this).closest("#line").remove(); } }); 
 							
-							$.serviceAPIDatalabSearch = function () { $("#serviceAPIDatalabSearchTable > tbody > tr").each(function (index, element) {
+							$.serviceAPIDatalabSearch = function () {
+										$("#serviceAPIDatalabSearchDiv > #line").each(function (index, element) {
 								
 								$(this).find("input[name$='][groupName]']").each(function (index2, element2) {
 									
-									if ("" == $.trim($(this).val())) { $(this).val("주제어" + (index + 1)); } });
+									if ("" == $.trim($(this).val())) { $(this).val("주제어" + (index + 1)); }
+									}
+								);
 								
 								$(this).find("input[name^='keywordGroups[']").each(function (index2, element2) 
-										
 									{
 									var inputName = $(this).attr("name");
 										
 								$(this).attr("name", "keywordGroups[" + index + inputName.substring(inputName.indexOf("]")));
-										if ("" == $.trim($(this).val())) { $(this).prop("disabled", true); } });
+										if ("" == $.trim($(this).val())) { $(this).prop("disabled", true); } 
+										}
+								);
 								
 								if ("" == $.trim($(this).find("input[name='keywordGroups[" + index + "][keywords][]']:first").val())) {
 									$(this).find("input[name='keywordGroups[" + index + "][keywords][]']:first").val("검색어" + (index + 1)).prop("disabled", false);
-									} });
+									} 
+								}
+										);
 							
 							$.ajax({ crossDomain: true, context: this, traditional: true,
 								url: "https://openapi.naver.com/v1/datalab/search", 
@@ -389,7 +395,8 @@ new Chart(document.getElementById("line-chart"), {
 									
 									error: function (jqXHR, textStatus, errorThrown)
 									{
-										var errorResponseCode = ""; errorResponseCode += "readyState : "; errorResponseCode += jqXHR.readyState;
+										var errorResponseCode = ""; errorResponseCode += "readyState : ";
+										errorResponseCode += jqXHR.readyState;
 									if ("0" == jqXHR.readyState) { errorResponseCode += "-UNSENT"; }
 									if ("1" == jqXHR.readyState) { errorResponseCode += "-OPENED"; }
 									if ("2" == jqXHR.readyState) { errorResponseCode += "-HEADERS_RECEIVED"; }
@@ -459,7 +466,7 @@ new Chart(document.getElementById("line-chart"), {
 				id="serviceAPIDatalabSearchStartDate" name="startDate"
 				placeholder="조회 시작 기간 선택" value="" readonly="readonly" />
 		</p>
-		<h4>조회 종료 일자(시작일로부터 7일)</h4>
+		<h5>조회 종료 일자(시작일로부터 8일) / 조회 종료일로부터 2일전까지 값을 볼 수 있어요!</h5>
 		<p>
 			<input class="form-control" type="text"
 				id="serviceAPIDatalabSearchEndDate" name="endDate"
@@ -473,15 +480,30 @@ new Chart(document.getElementById("line-chart"), {
 			</select>
 		</p>
 		<h4>검색어(2개까지 가능)</h4>
-		<table class="table table-bordered" id="serviceAPIDatalabSearchTable">
-			<thead>
-				<tr>
-					<th style="text-align: center;">주제어</th>
-					<th style="text-align: center;">검색어</th>
-					<th style="text-align: center; width: 140px;">추가/삭제</th>
-				</tr>
-			</thead>
-			<tbody>
+		
+		<div id="serviceAPIDatalabSearchDiv">
+		
+		<div style="display:flex;" id="line">
+		
+		<input class="form-control" type="text"style="margin: 3px 0px 0px 0px;"
+						name="keywordGroups[][groupName]" placeholder="주제어 입력" value="" />
+		
+		<input class="form-control"
+						style="margin: 3px 0px 0px 0px;" type="text"
+						name="keywordGroups[][keywords][]" placeholder="주제어와 동일" value="" />
+		
+		<button class="btn btn-primary serviceAPIDatalabSearchPlus"
+							type="button">추가</button>&nbsp;
+		
+		<button class="btn btn-primary serviceAPIDatalabSearchMinus"
+							type="button">삭제</button>
+		
+		</div>
+		
+		</div>
+		
+		<!-- <table class="table table-bordered" id="serviceAPIDatalabSearchTable">
+		
 				<tr>
 					<td><input class="form-control" type="text"style="margin: 3px 0px 0px 0px;"
 						name="keywordGroups[][groupName]" placeholder="주제어 입력" value="" />
@@ -497,8 +519,7 @@ new Chart(document.getElementById("line-chart"), {
 							type="button">삭제</button>
 					</td>
 				</tr>
-			</tbody>
-		</table>
+		</table> -->
 	</form>
 	<p>
 		<button class="btn btn-primary" type="button" style="width:100%; border-radius:30px;"
@@ -507,6 +528,7 @@ new Chart(document.getElementById("line-chart"), {
 	<canvas id="line-chart" style="width:300px; height:300px;"></canvas>
 	</div>
 	    <div class="overlay"></div>
+</div>
 </div>
 
    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>

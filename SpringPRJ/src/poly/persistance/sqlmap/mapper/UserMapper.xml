@@ -32,41 +32,4 @@
       		
 	</select>
 
-	<select id="getUserListTotalCount" resultType="java.lang.Integer">
-		SELECT 
-			COUNT(0)
-			AS CNT
-			FROM USER_INFO
-	</select>
-	
-	
-	<select id="getUserList" resultType="UserDTO">
-	SELECT 
-		USR_SEQ_NO as usr_seq_no,
-         		USR_ID as usr_id,
-         		PASSWORD as password,
-         		USR_NAME as usr_name,
-       			USR_NICKNAME as usr_nickname,
-        		USR_BIRTHDATE as usr_birthdate
-	FROM USER_INFO
-	</select>
-
-	<select parameterType="PagingDTO" id="getUserList2" resultType="UserDTO">
-		SELECT
-			USR_SEQ_NO as usr_seq_no,
-         		USR_ID as usr_id,
-         		PASSWORD as password,
-         		USR_NAME as usr_name,
-       			USR_NICKNAME as usr_nickname,
-        		USR_BIRTHDATE as usr_birthdate
-		FROM (
-		SELECT
-		ROWNUM AS RNUM
-		, A.*FROM USER_INFO A
-		ORDER BY USR_SEQ_NO DESC) T
-		WHERE RNUM BETWEEN
-		(( #{page_num}-1) * #{page_count} + 1 ) AND ( #{page_num} * #{page_count} )
-	</select>
-	
-
 </mapper>

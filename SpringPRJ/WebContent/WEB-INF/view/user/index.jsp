@@ -70,7 +70,7 @@
 	.card{
 		margin : 5px 50px 60px 50px;
 		width : 75%;
-		height : 700px;
+		height : 600px;
 		border-radius:50px;
 		border : 1px solid #FFFFFF;
 	}
@@ -105,7 +105,7 @@
         </nav>
 
 		<!-- 메인 -->
-		<div id="content" style="padding: 0px !important; width:100%; background:linear-gradient( #BBDEFB, #64FFDA);" >
+		<div id="content" style="padding: 0px !important; width:100%; background:linear-gradient( #BBDEFB, #FFF9C4);" >
 		<!-- 헤드바 -->
 			<nav class="navbar navbar-light" style="color:#FFFFFF;">
 			<button type="button" id="sidebarCollapse" class="btn btn-info" style="background-color:#FFFFFF !important; border-color:#FFFFFF !important;">
@@ -126,10 +126,13 @@
 			</nav>
 		
 		<!-- 핫 이슈! -->
-		<p style="color:#FFFFFF">현재 핫 이슈!</p>
+		<p style="color:#FFFFFF; text-align:center; margin:10px 0px 10px 0px;">실시간 핫 이슈!</p>
+		
+		<center><p id="clock" style="margin:0px; color:#fff"></p></center>
+		
 		<div class="card" id="feel">
-		<p style="width: 100px; word-break: keep-all; margin-left: 80px; padding-top:20px; text-align: center; color:#FFFFFF;
-		text-decoration-line: underline;text-decoration-style: wavy;">
+		<p style="width: 150px; margin-left: 60px; padding-top:20px; text-align: center; color:#FFFFFF;
+		text-decoration-line: underline;">
 		<%@include file = "crawling.jsp" %></p>
 		</div>
 		
@@ -149,6 +152,19 @@
     <!-- jQuery Custom Scroller CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
+<script>
+        setInterval(function(){
+             
+            var timer = new Date();
+            var h = timer.getHours();
+            var m = timer.getMinutes();
+            var s = timer.getSeconds();
+            document.getElementById('clock').innerHTML = h + "시" + m + "분" + s + "초";
+        },1000);
+    </script>
+
+
+출처: https://sd-berg.tistory.com/entry/javascript-setInterval로-디지털-시계-만들기 [Berg]
 
     <script type="text/javascript">
         $(document).ready(function () {

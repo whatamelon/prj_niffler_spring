@@ -72,6 +72,7 @@
 		width : 75%;
 		height : 700px;
 		border-radius:50px;
+		border : 1px solid #FFFFFF;
 	}
 	p{
     margin: 10px 0px 0px 40px;
@@ -86,7 +87,7 @@
 
     <div class="wrapper">
         <!-- Sidebar  -->
-        <nav id="sidebar">
+        <nav id="sidebar" style="color:#FFFFFF; background-color:#B3E5FC !important" >
             <ul class="list-unstyled components">
                 <li>
                     <a href="user/weather.do"> <i class="fas fa-sun"></i> 날씨</a>
@@ -104,11 +105,11 @@
         </nav>
 
 		<!-- 메인 -->
-		<div id="content" style="padding: 0px !important; width:100%; background:linear-gradient( #BBDEFB, #4527A0);" >
+		<div id="content" style="padding: 0px !important; width:100%; background:linear-gradient( #BBDEFB, #64FFDA);" >
 		<!-- 헤드바 -->
-			<nav class="navbar navbar-light amber darken-3">
-			<button type="button" id="sidebarCollapse" class="btn btn-info" style="background-color:#FF8F00 !important; border-color:#FF8F00 !important;">
-				<i class="fas fa-align-justify"></i>
+			<nav class="navbar navbar-light" style="color:#FFFFFF;">
+			<button type="button" id="sidebarCollapse" class="btn btn-info" style="background-color:#FFFFFF !important; border-color:#FFFFFF !important;">
+				<i class="fas fa-align-justify" style="color:#4FC3F7;"></i>
 			</button>
 			
 			

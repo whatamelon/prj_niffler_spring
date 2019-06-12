@@ -114,19 +114,19 @@ input{
 
     <div class="wrapper">
         <!-- Sidebar  -->
-        <nav id="sidebar">
+        <nav id="sidebar" style="color:#FFFFFF; background-color:#B3E5FC !important" >
             <ul class="list-unstyled components">
                 <li>
-                    <a href="weather.do"> <i class="fas fa-sun"></i> 날씨</a>
+                    <a href="user/weather.do"> <i class="fas fa-sun"></i> 날씨</a>
                 </li>
                 <li>
-                    <a href="Trend.do"> <i class="fas fa-chart-line"></i> 트렌드 검색</a>
+                    <a href="user/Trend.do"> <i class="fas fa-chart-line"></i> 트렌드 검색</a>
                 </li>
                 <li>
-                    <a href="recommend.do"> <i class="fas fa-check"></i> 오늘의 추천</a>
+                    <a href="user/recommend.do"> <i class="fas fa-check"></i> 오늘의 추천</a>
                 </li>
                 <li>
-                    <a href="feel.do"> <i class="fas fa-smile"></i> 오늘의 기분</a>
+                    <a href="user/feel.do"> <i class="fas fa-smile"></i> 오늘의 기분</a>
                 </li>
             </ul>
         </nav>
@@ -134,11 +134,11 @@ input{
 		<!-- 메인 -->
 		<div id="content" style="padding: 0px !important; width:100%;">
 		<!-- 헤드바 -->
-			<nav class="navbar navbar-light amber darken-3">
-			<button type="button" id="sidebarCollapse" class="btn btn-info" style="background-color:#FF8F00 !important; border-color:#FF8F00 !important;">
-				<i class="fas fa-align-justify"></i>
+			<nav class="navbar navbar-light" style="color:#FFFFFF;">
+			<button type="button" id="sidebarCollapse" class="btn btn-info" style="background-color:#FFFFFF !important; border-color:#FFFFFF !important;">
+				<i class="fas fa-align-justify" style="color:#4FC3F7;"></i>
 			</button>
-			<a href="/main.do" style="margin-right:15px;"><i class="fas fa-angle-right" style="color:white;"></i></a>
+			<a href="/main.do" style="margin-right:15px;"><i class="fas fa-angle-right" style="color:#4FC3F7;"></i></a>
 			</nav>
 		<div>
 		

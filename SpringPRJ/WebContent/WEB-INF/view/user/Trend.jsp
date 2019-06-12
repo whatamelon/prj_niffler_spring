@@ -431,9 +431,9 @@ new Chart(document.getElementById("line-chart"), {
 
 </head>
 <body>
- <div class="wrapper">
+    <div class="wrapper">
         <!-- Sidebar  -->
-        <nav id="sidebar">
+        <nav id="sidebar" style="color:#FFFFFF; background-color:#B3E5FC !important" >
             <ul class="list-unstyled components">
                 <li>
                     <a href="weather.do"> <i class="fas fa-sun"></i> 날씨</a>
@@ -453,11 +453,11 @@ new Chart(document.getElementById("line-chart"), {
 		<!-- 메인 -->
 		<div id="content" style="padding: 0px !important; width:100%; background:linear-gradient( #BBDEFB, #FFF9C4);">
 		<!-- 헤드바 -->
-			<nav class="navbar navbar-light amber darken-3">
-			<button type="button" id="sidebarCollapse" class="btn btn-info" style="background-color:#FF8F00 !important; border-color:#FF8F00 !important;">
-				<i class="fas fa-align-justify"></i>
+			<nav class="navbar navbar-light" style="color:#FFFFFF;">
+			<button type="button" id="sidebarCollapse" class="btn btn-info" style="background-color:#FFFFFF !important; border-color:#FFFFFF !important;">
+				<i class="fas fa-align-justify" style="color:#4FC3F7;"></i>
 			</button>
-			<a href="/main.do" style="margin-right:15px;"><i class="fas fa-angle-right" style="color:white;"></i></a>
+			<a href="/main.do" style="margin-right:15px;"><i class="fas fa-angle-right" style="color:#4FC3F7;"></i></a>
 			</nav>
 	
 	<div id="main" style="margin:20px 20px 20px 20px;">
@@ -497,10 +497,12 @@ new Chart(document.getElementById("line-chart"), {
 						name="keywordGroups[][keywords][]" placeholder="주제어 동일" value="" />
 		
 		<button class="btn btn-primary serviceAPIDatalabSearchPlus"
-							type="button">추가</button>&nbsp;
+							type="button" style="background-color: transparent !important;
+		border: 1px solid;color: #000000;">추가</button>
 		
 		<button class="btn btn-primary serviceAPIDatalabSearchMinus"
-							type="button">삭제</button>
+							type="button" style="background-color: transparent !important;
+		border: 1px solid;color: #000000;">삭제</button>
 		
 		</div>
 		
@@ -526,7 +528,8 @@ new Chart(document.getElementById("line-chart"), {
 		</table> -->
 	</form>
 	<p>
-		<button class="btn btn-primary" type="button" style="width:100%; border-radius:30px;"
+		<button class="btn btn-primary" type="button" style="width:100%; border-radius:30px; background-color: transparent !important; margin-top:10px;
+		border: 1px solid;color: #000000;"
 			onclick="$.serviceAPIDatalabSearch();">검색</button>
 	</p>
 	<canvas id="line-chart" style="width:300px; height:300px;"></canvas>

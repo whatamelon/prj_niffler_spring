@@ -47,9 +47,9 @@
 
 
 		<div class="main-panel">
-			<nav class="navbar navbar-light amber darken-3">
+			<nav class="navbar navbar-light" style="background-color:#B3E5FC;">
 			 <span class="navbar-brand" style="margin-left: 135px;">회원가입</span>
-			  <a href="intro.do"><i class="fas fa-angle-right" style="color:black;"></i></a> 
+			  <a href="intro.do"><i class="fas fa-angle-right" style="color:#FFFFFF;"></i></a> 
 			  </nav>
 		</div>
 		<!-- End Navbar -->
@@ -103,7 +103,7 @@
                   
                   <div class="row">
                   	<div class="col-md-12" style="margin-left:110px;">
-                  	<button type="button" onclick="check()" value=회원가입 class="btn btn-deep-orange"> <p style="color:white; margin-bottom:0px;">회원가입</p></button>
+                  	<button type="button" onclick="check()" value=회원가입 class="btn btn-deep-orange" style="background-color:#B3E5FC !important"> <p style="color:white; margin-bottom:0px;">회원가입</p></button>
                   	</div>
                   </div>
                 </form>

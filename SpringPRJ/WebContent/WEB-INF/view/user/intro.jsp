@@ -45,9 +45,9 @@
   </style>
 </head>
 
-<body class="" style="background-color : black;">
+<body style="background:linear-gradient( #BBDEFB, #FFF9C4);">
 
-  <div class="wrapper ">
+  <div class="wrapper " style="height:640px;">
   
   	<center>
   		<p id=time-result style="color:white;"></p>
@@ -77,9 +77,9 @@
   			
   		</ul>
   		
-  		<a href="#" style="border:1px solid white; background-color:black; padding : 5px; margin-top:100px;">
+ <!--  		<a href="#" style="border:1px solid white; background-color:black; padding : 5px; margin-top:100px;">
   			what is it?
-  		</a>
+  		</a> -->
   		</center>
   	</div>
 		<form action="/user/loginProc.do" method="post" id="submitForm">

@@ -41,13 +41,12 @@
 
 <body class="">
 
-  <div class="wrapper ">
-  
-  <nav class="navbar navbar-light amber darken-3">
-  		<span class="navbar-brand" style="margin-left:135px;">FAQ</span>
-  		<a href="intro.do"><i class="fas fa-angle-right" style="color:black;"></i></a>
-  </nav>
-  
+<div class="main-panel">
+			<nav class="navbar navbar-light" style="background-color:#B3E5FC;">
+			 <span class="navbar-brand" style="margin-left: 135px;">FAQ</span>
+			  <a href="intro.do"><i class="fas fa-angle-right" style="color:#B3E5FC;"></i></a> 
+			  </nav>
+		</div>
   <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true" style="margin-top:2px;">
 
   <!-- Accordion card -->

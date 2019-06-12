@@ -120,7 +120,7 @@
 
     <div class="wrapper">
         <!-- Sidebar  -->
-        <nav id="sidebar">
+        <nav id="sidebar" style="color:#FFFFFF; background-color:#B3E5FC !important" >
             <ul class="list-unstyled components">
                 <li>
                     <a href="weather.do"> <i class="fas fa-sun"></i> 날씨</a>
@@ -137,15 +137,16 @@
             </ul>
         </nav>
 
-      <!-- 메인 -->
-      <div id="content" style="padding: 0px !important; width:100%; background:linear-gradient( #BBDEFB, #4527A0);">
-      <!-- 헤드바 -->
-         <nav class="navbar navbar-light amber darken-3">
-         <button type="button" id="sidebarCollapse" class="btn btn-info" style="background-color:#FF8F00 !important; border-color:#FF8F00 !important;">
-            <i class="fas fa-align-justify"></i>
-         </button>
-         <a href="/main.do" style="margin-right:15px;"><i class="fas fa-angle-right" style="color:white;"></i></a>
-         </nav>
+		<!-- 메인 -->
+		<div id="content" style="padding: 0px !important; width:100%; background:linear-gradient( #BBDEFB, #FFF9C4);">
+		<!-- 헤드바 -->
+			<nav class="navbar navbar-light" style="color:#FFFFFF;">
+			<button type="button" id="sidebarCollapse" class="btn btn-info" style="background-color:#FFFFFF !important; border-color:#FFFFFF !important;">
+				<i class="fas fa-align-justify" style="color:#4FC3F7;"></i>
+			</button>
+			<a href="/main.do" style="margin-right:15px;"><i class="fas fa-angle-right" style="color:#4FC3F7;"></i></a>
+			</nav>
+	
       
       <!-- 현재 날씨! -->
       <p style="margin-top:20px; color:#FFFFFF;">현재 날씨!</p>

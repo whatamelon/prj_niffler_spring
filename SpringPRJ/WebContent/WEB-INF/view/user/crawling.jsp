@@ -34,6 +34,6 @@ for(Element row : rowElements) // for 문 돌리기
 
 %>
 
-<%=string %> 
+<%=string + "\n"%> 
 </body>
 </html>

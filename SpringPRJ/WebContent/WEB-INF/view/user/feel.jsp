@@ -4,7 +4,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-
 <%
    FeelDTO fDTO = (FeelDTO) request.getAttribute("fDTO");
 %>
@@ -111,6 +110,119 @@ input{
 }
 
 
+
+input[type="radio"] {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
+
+input[type="radio"]:focus + label:before,
+input[type="radio"]:hover + label:before {
+	border-color: black;
+}
+
+input[type="radio"]:active + label:before {
+	-webkit-transition-duration: 0;
+	transition-duration: 0;
+	-webkit-filter: brightness(0.2);
+	filter: brightness(0.2);
+}
+
+input[type="radio"] + label {
+	position: relative;
+	padding: 10px;
+	margin:0px 10px 0px 11px !important;
+	vertical-align: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+input[type="radio"] + label:before {
+	box-sizing: content-box;
+	content: '';
+	color: #81C784;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	width: 14px;
+	height: 14px;
+	margin-top: -9px;
+	border: 2px solid #fff;
+	text-align: center;
+}
+input[type="radio"] + label:after {
+	box-sizing: content-box;
+	content: '';
+	background-color: #81C784;
+	position: absolute;
+	top: 50%;
+	left: 4px;
+	width: 10px;
+	height: 10px;
+	margin-top: -5px;
+	-webkit-transform: scale(0);
+	transform: scale(0);
+	-webkit-transform-origin: 50%;
+	transform-origin: 50%;
+	-webkit-transition: -webkit-transform 200ms ease-out;
+	transition: -webkit-transform 200ms ease-out;
+	transition: transform 200ms ease-out;
+	transition: transform 200ms ease-out, -webkit-transform 200ms ease-out;
+}
+
+input[type="radio"]:checked + label:before {
+	-webkit-animation: borderscale 300ms ease-in;
+	animation: borderscale 300ms ease-in;
+	background-color: transparent;
+}
+
+input[type="radio"]:checked + label:after {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+}
+
+input[type="radio"] + label:before,
+input[type="radio"] + label:after {
+	border-radius: 50%;
+}
+
+@-webkit-keyframes borderscale {
+	50% {
+		box-shadow: 0 0 0 2px #81C784;
+	}
+}
+
+@keyframes borderscale {
+	50% {
+		box-shadow: 0 0 0 2px #81C784;
+	}
+}
+input:focus {
+	border: 1px solid #fff;
+}
+
+input:not(:focus):invalid {
+	border: 1px solid red;
+	outline: none;
+}
+
+input:not(:focus):valid {
+	border: 1px solid green;
+}
+label {
+	cursor: pointer;
+	display: inline-block;
+}
+
+
+
 </style>
 
 </head>
@@ -167,9 +279,9 @@ input{
 		
 		<p>오늘은 기분을 저장했습니다!</p>
 		
-		</div>
+		</div> 
 		
-		<%} else { %>
+		<%} else { %> 
 		
 		
 		
@@ -181,11 +293,16 @@ input{
 			<a href="#" style="color:#9575CD;" class="5"><i class="far fa-laugh-squint fa-2x " id="today"></i></a>
 		
 			<div class="checkboxdiv">
-				<input type="radio" name="feelcheck" value="1"  class="check1">
-				<input type="radio" name="feelcheck" value="2"  class="check2">
-				<input type="radio" name="feelcheck" value="3"  class="check3">
-				<input type="radio" name="feelcheck" value="4"  class="check4">
-				<input type="radio" name="feelcheck" value="5"  class="check5">
+				<input type="radio" id="radio1" name="feelcheck" value="1"  class="check1">
+				<label for="radio1"></label>
+				<input type="radio" id="radio2" name="feelcheck" value="2"  class="check2">
+				<label for="radio2"></label>
+				<input type="radio" id="radio3" name="feelcheck" value="3"  class="check3">
+				<label for="radio3"></label>
+				<input type="radio"id="radio4"  name="feelcheck" value="4"  class="check4">
+				<label for="radio4"></label>
+				<input type="radio" id="radio5" name="feelcheck" value="5"  class="check5">
+				<label for="radio5"></label>
 				
 				<input type="hidden" name="feel_weather" id="main"  />
 				
@@ -194,7 +311,7 @@ input{
 		</div>
 		
 		<button class="btn btn-primary" type="button" style="width:300px; margin-left:40px; border-radius:30px;background-color: transparent !important;
-		border: 1px solid;color: #000000;"onclick="check()">확인!</button>
+		border: 1px solid #fff;color: #fff;"onclick="check()">확인!</button>
 		
 		
 		

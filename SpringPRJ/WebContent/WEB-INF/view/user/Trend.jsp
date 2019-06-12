@@ -59,13 +59,10 @@
 			if (options.crossDomain && jQuery.support.cors) 
 			{ options.url = "https://cors-anywhere.herokuapp.com/" + options.url; } }); 
 			$(document).ajaxStart(function() 
-					{ $.blockUI({
-						message: "<h1 style=\"color: #1ab394;\">LOADING</h1>",
-						css: { backgroundColor: "rgba(0, 0, 0, 0.0)", color: "#000000", border: "0px solid #000000", width: "150px", top: ($(window).height() - 150) / 2 + "px", left: ($(window).width() - 150) / 2 + "px" }
-						});
-					}); 
-			$(document).ajaxStop(function() { $.unblockUI(); });
-			});
+					{ $.blockUI({ message: "<h1 style=\"color: #1ab394;\">LOADING</h1>",
+					css: { backgroundColor: "rgba(0, 0, 0, 0.0)", color: "#000000", border: "0px solid #000000", width: "150px",
+						top: ($(window).height() - 150) / 2 + "px", left: ($(window).width() - 150) / 2 + "px" } }); }); 
+			$(document).ajaxStop(function() { $.unblockUI(); }); });
 </script>
 
 <!-- Bootstrap CDN -->
@@ -128,8 +125,12 @@ svg {
 .title-text {
   font-size: 12px;
 }
+.btn-primary{
+border-color : #D1C4E9 !important;
+background-color:#D1C4E9 !important;
+}
 .btn.btn-primary{
-	box-shadow : 0 3px #999 !important;
+	box-shadow : 0 3px #4527A0 !important;
 	cursor : pointer;
 	}
 	.btn.btn-primary:hover{
@@ -202,16 +203,11 @@ svg {
 		
 		$("#serviceAPIDatalabSearchStartDate, #serviceAPIDatalabSearchEndDate").datepicker({ dateFormat: "yy-mm-dd",
 			maxDate: new Date(), showButtonPanel: true });
-		
 		$("#serviceAPIDatalabSearchStartDate, #serviceAPIDatalabSearchEndDate").datepicker("setDate", new Date());
-		
 		$("#serviceAPIDatalabSearchStartDate").on("change", 
-				
 				function () { 
 				$("#serviceAPIDatalabSearchEndDate").datepicker("option", "minDate", 
-						$.datepicker.parseDate("yy-mm-dd", $(this).val())); 
-				});
-		
+						$.datepicker.parseDate("yy-mm-dd", $(this).val())); });
 				$("#serviceAPIDatalabSearchEndDate").on("change", 
 						function () { 
 							$("#serviceAPIDatalabSearchStartDate").datepicker("option", "maxDate", $.datepicker.parseDate("yy-mm-dd", $(this).val()));
@@ -226,40 +222,37 @@ svg {
 								
 										if ($("#serviceAPIDatalabSearchDiv > #line").length < 2) { 
 											
-											$(this).closest("#line").after($(this).closest("#line").clone().wrapAll("<div/>").parent().html()); }
-										});
+											$(this).closest("#line").after($(this).closest("#line").clone().wrapAll("<div/>").parent().html()); } });
 							
 							$(document).on("click", ".serviceAPIDatalabSearchMinus", function (eventObject) {
 								
 								if ($(this).parents().find("#serviceAPIDatalabSearchDiv > #line").length == 1) {
 									
-									$("#serviceAPIDatalabSearchDiv > #line input").val(""); 
-									
-								 else { $(this).closest("#line").remove(); } }); 
+									$("#serviceAPIDatalabSearchDiv > #line input").val(""); } else { $(this).closest("#line").remove(); } }); 
 							
 							$.serviceAPIDatalabSearch = function () {
 										$("#serviceAPIDatalabSearchDiv > #line").each(function (index, element) {
 								
-											$(this).find("input[name$='][groupName]']").each(function (index2, element2) {
+								$(this).find("input[name$='][groupName]']").each(function (index2, element2) {
 									
-												if ("" == $.trim($(this).val())) { $(this).val("주제어" + (index + 1)); }
-													}
-											);
+									if ("" == $.trim($(this).val())) { $(this).val("주제어" + (index + 1)); }
+									}
+								);
 								
-											$(this).find("input[name^='keywordGroups[']").each(function (index2, element2) 
-													{
-												var inputName = $(this).attr("name");
+								$(this).find("input[name^='keywordGroups[']").each(function (index2, element2) 
+									{
+									var inputName = $(this).attr("name");
 										
-											$(this).attr("name", "keywordGroups[" + index + inputName.substring(inputName.indexOf("]")));
-													if ("" == $.trim($(this).val())) { $(this).prop("disabled", true); } 
-													}
-												);
+								$(this).attr("name", "keywordGroups[" + index + inputName.substring(inputName.indexOf("]")));
+										if ("" == $.trim($(this).val())) { $(this).prop("disabled", true); } 
+										}
+								);
 								
-												if ("" == $.trim($(this).find("input[name='keywordGroups[" + index + "][keywords][]']:first").val())) {
-													$(this).find("input[name='keywordGroups[" + index + "][keywords][]']:first").val("검색어" + (index + 1)).prop("disabled", false);
-														} 
-													}
-												);
+								if ("" == $.trim($(this).find("input[name='keywordGroups[" + index + "][keywords][]']:first").val())) {
+									$(this).find("input[name='keywordGroups[" + index + "][keywords][]']:first").val("검색어" + (index + 1)).prop("disabled", false);
+									} 
+								}
+										);
 							
 							$.ajax({ crossDomain: true, context: this, traditional: true,
 								url: "https://openapi.naver.com/v1/datalab/search", 
@@ -383,27 +376,27 @@ svg {
 									
 									
 									
-										new Chart(document.getElementById("line-chart"), {
-  											type: 'line',
-  											data: {
-    										labels: [date1,date2,date3,date4,date5,date6,date7],
-    										datasets: [{ 
-        									data: [ratio1,ratio2,ratio3,ratio4,ratio5,ratio6,ratio7],
-        									label: subject1,
-        									borderColor: "#3e95cd",
-        									fill: false
-      										}, { 
-        									data: [ratio8,ratio9,ratio10,ratio11,ratio12,ratio13,ratio14],
-       										label: subject2,
-        									borderColor: "#8e5ea2",
-        									fill: false
-      														}
-    											]
- 											 }
-										}
-										);
+new Chart(document.getElementById("line-chart"), {
+  type: 'line',
+  data: {
+    labels: [date1,date2,date3,date4,date5,date6,date7],
+    datasets: [{ 
+        data: [ratio1,ratio2,ratio3,ratio4,ratio5,ratio6,ratio7],
+        label: subject1,
+        borderColor: "#3e95cd",
+        fill: false
+      }, { 
+        data: [ratio8,ratio9,ratio10,ratio11,ratio12,ratio13,ratio14],
+        label: subject2,
+        borderColor: "#8e5ea2",
+        fill: false
+      }
+    ]
+  }
+});
 									}
 									},
+									
 									error: function (jqXHR, textStatus, errorThrown)
 									{
 										var errorResponseCode = ""; errorResponseCode += "readyState : ";
@@ -429,7 +422,7 @@ svg {
 									errorResponseCode += "responseText : ";
 									errorResponseCode += (jqXHR.responseText == null ? "" : jqXHR.responseText.replace(/\r/g, "").replace(/\n/g, ""));
 									alert(errorResponseCode);
-									}, 
+									},
 									complete: function (jqXHR, textStatus) { 
 										$("input[name^='keywordGroups[']").each(function (index, element) { 
 											if ("" == $.trim($(this).val())) { $(this).prop("disabled", false); } }); } }); }; });
@@ -458,7 +451,7 @@ svg {
         </nav>
 
 		<!-- 메인 -->
-		<div id="content" style="padding: 0px !important; width:100%;">
+		<div id="content" style="padding: 0px !important; width:100%; background:linear-gradient( #BBDEFB, #FFF9C4);">
 		<!-- 헤드바 -->
 			<nav class="navbar navbar-light amber darken-3">
 			<button type="button" id="sidebarCollapse" class="btn btn-info" style="background-color:#FF8F00 !important; border-color:#FF8F00 !important;">
@@ -490,7 +483,7 @@ svg {
 				<option value="month">월간</option>
 			</select>
 		</p>
-		<h4>검색어(1개 검색은 안돼요!)</h4>
+		<h4>검색어(2개를 선택해주세요!)</h4>
 		
 		<div id="serviceAPIDatalabSearchDiv">
 		
@@ -501,7 +494,7 @@ svg {
 		
 		<input class="form-control"
 						style="margin: 3px 0px 0px 0px;" type="text"
-						name="keywordGroups[][keywords][]" placeholder="주제어와 동일" value="" />
+						name="keywordGroups[][keywords][]" placeholder="주제어 동일" value="" />
 		
 		<button class="btn btn-primary serviceAPIDatalabSearchPlus"
 							type="button">추가</button>&nbsp;

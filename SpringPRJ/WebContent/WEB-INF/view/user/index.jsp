@@ -70,7 +70,8 @@
 	.card{
 		margin : 5px 50px 60px 50px;
 		width : 75%;
-		height : 500px;
+		height : 700px;
+		border-radius:50px;
 	}
 	p{
     margin: 10px 0px 0px 40px;
@@ -103,7 +104,7 @@
         </nav>
 
 		<!-- 메인 -->
-		<div id="content" style="padding: 0px !important; width:100%;">
+		<div id="content" style="padding: 0px !important; width:100%; background:linear-gradient( #BBDEFB, #4527A0);" >
 		<!-- 헤드바 -->
 			<nav class="navbar navbar-light amber darken-3">
 			<button type="button" id="sidebarCollapse" class="btn btn-info" style="background-color:#FF8F00 !important; border-color:#FF8F00 !important;">
@@ -111,13 +112,24 @@
 			</button>
 			
 			
-			<button onclick="location.href = 'user/logout.do' ">로그아웃</button>
+			<button onclick="location.href = 'user/logout.do'  " style="
+    background-color: #D1C4E9;
+    border-color: #D1C4E9;
+    border: 0px solid;
+    border-radius: 10px;
+    width: 80px;
+    height: 30px;
+    margin-left: 140px;
+    color: #FFFFFF;
+">로그아웃</button>
 			</nav>
 		
 		<!-- 핫 이슈! -->
-		<p>현재 핫 이슈!</p>
+		<p style="color:#FFFFFF">현재 핫 이슈!</p>
 		<div class="card" id="feel">
-		<p style="width: 100px; word-break: keep-all; margin-left: 80px; padding-top:20px; text-align: center;"><%@include file = "crawling.jsp" %></p>
+		<p style="width: 100px; word-break: keep-all; margin-left: 80px; padding-top:20px; text-align: center; color:#FFFFFF;
+		text-decoration-line: underline;text-decoration-style: wavy;">
+		<%@include file = "crawling.jsp" %></p>
 		</div>
 		
 		

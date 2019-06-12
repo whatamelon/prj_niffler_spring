@@ -132,7 +132,7 @@ input{
         </nav>
 
 		<!-- 메인 -->
-		<div id="content" style="padding: 0px !important; width:100%;">
+		<div id="content" style="padding: 0px !important; width:100%; background:linear-gradient( #BBDEFB, #4527A0);">
 		<!-- 헤드바 -->
 			<nav class="navbar navbar-light amber darken-3">
 			<button type="button" id="sidebarCollapse" class="btn btn-info" style="background-color:#FF8F00 !important; border-color:#FF8F00 !important;">

@@ -84,6 +84,7 @@
        margin: 10px 0px 0px 40px;
        font-weight:bold;
        font-size: 1.0em;
+       
    }
    .weekWeather{
       font-size : 15px;
@@ -137,7 +138,7 @@
         </nav>
 
       <!-- 메인 -->
-      <div id="content" style="padding: 0px !important; width:100%;">
+      <div id="content" style="padding: 0px !important; width:100%; background:linear-gradient( #BBDEFB, #4527A0);">
       <!-- 헤드바 -->
          <nav class="navbar navbar-light amber darken-3">
          <button type="button" id="sidebarCollapse" class="btn btn-info" style="background-color:#FF8F00 !important; border-color:#FF8F00 !important;">
@@ -147,7 +148,7 @@
          </nav>
       
       <!-- 현재 날씨! -->
-      <p style="margin-top:20px;">현재 날씨!</p>
+      <p style="margin-top:20px; color:#FFFFFF;">현재 날씨!</p>
       <div class="card" id="feel" style="background-color:#F1F8E9; display:inherit;">
          <div style=" float: left;margin-left: 0px;margin-top: 20px;"><p id="main"style="font-style: italic;font-size: 30px;
          text-shadow: 2px 8px 6px rgba(0,0,0,0.2), 0px -3px 20px rgba(255,255,255,0.4);"></p></div>
@@ -161,7 +162,7 @@
       </div>
          
       <!-- 이번주 날씨! -->
-      <p>이번주 날씨!</p>
+      <p style="color:#FFFFFF;">이번주 날씨!</p>
       <div class="card" id="link">
       <div class="dates" style="float:left; border-right-style:inset; background-color : #E8F5E9">
          <p id="weekDate1" class="weekWeather"></p>

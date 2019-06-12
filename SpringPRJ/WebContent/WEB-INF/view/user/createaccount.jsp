@@ -67,14 +67,14 @@
                   <div class="row">
                     <div class="col-md-6 pr-1">
                       <div class="md-form mt-0">
-                        <input type="text" class="form-control" name="usr_password" id="pwd_ck" maxlength="20" placeholder="비밀번호(8자리~20자 사이)" required/>
+                        <input type="password" class="form-control" name="usr_password" id="pwd_ck" maxlength="20" placeholder="비밀번호(8자리~20자 사이)" required/>
                       </div>
                     </div>
                     </div>
                     <div class="row">
                     <div class="col-md-6 pr-1">
                       <div class="md-form mt-0">
-                        <input type="text" class="form-control"  name="pwdChk" id="pwdChk_id" maxlength="20" placeholder="비밀번호 확인" required/>
+                        <input type="password" class="form-control"  name="pwdChk" id="pwdChk_id" maxlength="20" placeholder="비밀번호 확인" required/>
                       </div>
                     </div>
                   </div>

@@ -117,16 +117,16 @@ input{
         <nav id="sidebar" style="color:#FFFFFF; background-color:#B3E5FC !important" >
             <ul class="list-unstyled components">
                 <li>
-                    <a href="user/weather.do"> <i class="fas fa-sun"></i> 날씨</a>
+                    <a href="weather.do"> <i class="fas fa-sun"></i> 날씨</a>
                 </li>
                 <li>
-                    <a href="user/Trend.do"> <i class="fas fa-chart-line"></i> 트렌드 검색</a>
+                    <a href="Trend.do"> <i class="fas fa-chart-line"></i> 트렌드 검색</a>
                 </li>
                 <li>
-                    <a href="user/recommend.do"> <i class="fas fa-check"></i> 오늘의 추천</a>
+                    <a href="recommend.do"> <i class="fas fa-check"></i> 오늘의 추천</a>
                 </li>
                 <li>
-                    <a href="user/feel.do"> <i class="fas fa-smile"></i> 오늘의 기분</a>
+                    <a href="feel.do"> <i class="fas fa-smile"></i> 오늘의 기분</a>
                 </li>
             </ul>
         </nav>

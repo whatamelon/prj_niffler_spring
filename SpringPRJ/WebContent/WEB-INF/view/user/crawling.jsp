@@ -18,6 +18,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style>
+
+#text{
+	word-break:keep-all;
+}
+
+</style>
 </head>
 <body>
 
@@ -29,11 +36,11 @@ Elements rowElements = doc.select("div.area_hotkeyword.PM_CL_realtimeKeyword_bas
 // 태그 선택하기
 for(Element row : rowElements) // for 문 돌리기
 {
-	string += row.text() + "\n"; // row.text를 한 줄씩 끊음
+	string += row.text() + "<br/>"; // row.text를 한 줄씩 끊음
 }
 
 %>
 
-<%=string + "\n"%> 
+<%=string%> 
 </body>
 </html>

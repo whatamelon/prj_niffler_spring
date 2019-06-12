@@ -140,86 +140,14 @@ input{
 			</button>
 			<a href="/main.do" style="margin-right:15px;"><i class="fas fa-angle-right" style="color:white;"></i></a>
 			</nav>
-		
-		<form action="/user/sendFeel.do" method="post" id="submitForm">
-		
-		<p>오늘의 기분을 알려주세요!</p>
-		
-		<span style="display:flex;"><p>오늘은</p><p id=time-result style="margin-left:20px;"></p><p style="margin-left:20px;">입니다.</p></span>
-		
-		<%
-		Date from = new Date();
-
-		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
-
-		String to = transFormat.format(from);
-		
-		if(fDTO.getFeel_date().equals(to)){
-			
-		%>
-		
 		<div>
 		
-		<p>오늘은 기분을 저장했습니다!</p>
+		<p>성공적으로 저장했습니다!</p>
 		
 		</div>
-		
-		<%} else { %>
-		
-		
-		
-		<div class="card" id="feel">
-			<a href="#" style="color:#EF5350;" class="1"><i class="far fa-dizzy fa-2x "  id="today"></i></a>
-			<a href="#"  style="color:#FFD54F;" class="2"><i class="far fa-frown fa-2x "  id="today"></i></a>
-			<a href="#"  style="color:#81C784;" class="3"><i class="far fa-meh fa-2x " id="today"></i></a>
-			<a href="#"  style="color:#64B5F6;" class="4"><i class="far fa-smile fa-2x " id="today"></i></a>
-			<a href="#" style="color:#9575CD;" class="5"><i class="far fa-laugh-squint fa-2x " id="today"></i></a>
-		
-			<div class="checkboxdiv">
-				<input type="radio" name="feelcheck" value="1"  class="check1">
-				<input type="radio" name="feelcheck" value="2"  class="check2">
-				<input type="radio" name="feelcheck" value="3"  class="check3">
-				<input type="radio" name="feelcheck" value="4"  class="check4">
-				<input type="radio" name="feelcheck" value="5"  class="check5">
-				
-				<input type="hidden" name="feel_weather" id="main"  />
-				
-			</div>		
-		
-		</div>
-		
-		<button class="btn btn-primary" type="button" style="width:300px; margin-left:40px; border-radius:30px;"
-			onclick="check()">확인!</button>
-		
-		
-		
-		</form>
-		<% } %>
 	</div>
 	</div>
-    <div class="overlay"></div>
     
-    <script type="text/javascript">
-
-    function check(){ 
-
-    var feel_weather = $( 'input#main' ).text();
- 
-    $('#main').val(feel_weather);
-   
-   	 $('#submitForm').submit();
-   }
-
-   	 
-    </script>
-    
-    
-    <script type="text/javascript">
-        var d = new Date();
-        var currentDate = d.getFullYear() + "년 " + ( d.getMonth() + 1 ) + "월 " + d.getDate() + "일 ";
-        var result = document.getElementById("time-result");
-        result.innerHTML =  currentDate;
-</script>
     
    <!-- jQuery Custom Scroller CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
@@ -241,33 +169,6 @@ input{
         });
     </script>
 
-<script type="text/javascript">
-   const key = '3d31ad55e3b04dcdfb1d42ff1af32638';
-   function weatherBallon( cityID ) {
-      fetch('https://api.openweathermap.org/data/2.5/forecast?id=' + cityID+ '&appid=' + key)  
-      .then(function(resp) { return resp.json() }) // Convert data to json
-      .then(function(data) {
-         drawWeather(data);
-      })
-      .catch(function() {
-      // catch any errors
-   });;
-   }
-   function drawWeather( d ) {
-      
-      // 오늘 날씨
-     var main = d.list[4].weather[0].main;
-     
-     document.getElementById('main').innerHTML = main;
-
-   }
-    if(location=='Seoul-teukbyeolsi') document.getElementById("location").innerHTML = ('서울'); 
-
-   
-   window.onload = function() {
-      weatherBallon( 1835847 );
-   }
-   </script>
 
 
 </body>

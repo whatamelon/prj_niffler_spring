@@ -92,7 +92,7 @@
                     </div>
                     <div class="col-md-4 pl-1">
                       <div class="md-form mt-0">
-                        <input type="number" class="form-control" name="usr_age" id="usr_age" placeholder="나이(숫자로 입력해주세요.)" required/>
+                        <input type="number" class="form-control" name="usr_age" id="usr_age" placeholder="나이" required/>
                       </div>
                     </div>
                     <div class="col-md-4 pl-1">

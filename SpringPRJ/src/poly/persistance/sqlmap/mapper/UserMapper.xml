@@ -5,14 +5,14 @@
 	<!-- insert, update, delete, select -->
 	
 	<insert id="insertUser" parameterType="UserDTO">
-		INSERT INTO USR_TABLE
+		INSERT INTO usr_table
 		(
-			USR_ID,
-			USR_PASSWORD,
-			USR_NAME,
-			USR_HOBBY,
-			USR_AGE,
-			USR_JOB
+			usr_id,
+			usr_password,
+			usr_name,
+			usr_hobby,
+			usr_age,
+			usr_job
 		)
 		VALUES
 		(
@@ -27,8 +27,8 @@
 	
 	<select id="login" parameterType="UserDTO" resultType="UserDTO">
 			SELECT  *
-      		FROM USR_TABLE
-      		WHERE USR_ID=#{usr_id}  AND USR_PASSWORD=#{usr_password}
+      		FROM usr_table
+      		WHERE usr_id=#{usr_id}  AND usr_password=#{usr_password}
       		
 	</select>
 

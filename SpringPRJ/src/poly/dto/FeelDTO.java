@@ -18,7 +18,7 @@ public class FeelDTO {
 	public void setFeel_val(String feel_val) {
 		this.feel_val = feel_val;
 	}
-	public String gettFeel_date() {
+	public String getFeel_date() {
 		return feel_date;
 	}
 	public void setFeel_date(String feel_date) {

@@ -103,7 +103,7 @@ public String feel (HttpServletRequest request, HttpServletResponse response, Mo
 	
 	model.addAttribute("fDTO",fDTO);
 	
-	log.info("feel_date  : " + fDTO.gettFeel_date());
+	log.info("feel_date  : " + fDTO.getFeel_date());
 	
 	return "/user/feel";
 }
@@ -117,22 +117,40 @@ public String sendFeel (HttpServletRequest request, HttpServletResponse response
 	String feel_val = request.getParameter("feelcheck");
 	String feel_weather = request.getParameter("feel_weather");
 	
-	log.info("feel_val :" + feel_val);
-	log.info("feel_weather :" + feel_weather);
+	log.info("feel_val1 :" + feel_val);
+	log.info("feel_weather1 :" + feel_weather);
 	
 	FeelDTO fDTO = new FeelDTO();
+	
+	log.info("feel_val2 :" + feel_val);
+	log.info("feel_weather2 :" + feel_weather);
 	
 	fDTO.setFeel_no(feel_no);
 	fDTO.setFeel_val(feel_val);
 	fDTO.setFeel_weather(feel_weather);
 	
+	log.info("feel_val3 :" + feel_val);
+	log.info("feel_weather3 :" + feel_weather);
+	
 	int result = feelService.insertFeel(fDTO);
 	
-	return "/user/feel";
+	log.info("feel_val4 :" + feel_val);
+	log.info("feel_weather4 :" + feel_weather);
+	
+	return "/user/feelOK";
 }
 
 
 //----------------------------------------------------------------기분 보내기 끝------------------------------------------------------------------------
+
+//----------------------------------------------------------------트렌드 페이지------------------------------------------------------------------------
+
+@RequestMapping(value="/user/feelOK")
+public String feelOK (HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception{
+
+	return "/user/feelOK";
+}
+
 
 //----------------------------------------------------------------회원가입 시작------------------------------------------------------------------------
 
@@ -171,7 +189,8 @@ public String sendFeel (HttpServletRequest request, HttpServletResponse response
 		
 		int result = userService.insertUser(uDTO);
 		
-		return "/user/index";
+		
+		return "/user/intro";
 	}
 	//--------------------------------------------------회원가입 끝----------------------------------------------------------------------------------------
 	

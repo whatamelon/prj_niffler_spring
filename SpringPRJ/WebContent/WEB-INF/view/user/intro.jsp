@@ -66,13 +66,25 @@
   		<ul style="list-style: none; color:white; padding-left:0px;">
   	
   			<li >
-  				<a href="#modal fade" data-toggle="modal" data-target="#myModal">Login</a>
+  				<a href="#modal fade" data-toggle="modal" data-target="#myModal" style="
+    border: 1px solid;
+    border-radius: 30px;
+    padding: 5px 15px 7px 15px;
+">Login</a>
   			</li>
   			<li>
-  				<a href="faq.do">FAQ</a>
+  				<a href="faq.do"style="
+    border: 1px solid;
+    border-radius: 30px;
+    padding: 5px 15px 7px 15px;
+">FAQ</a>
   			</li>
   			<li>
-  				<a href="createaccount.do">Join</a>
+  				<a href="createaccount.do"style="
+    border: 1px solid;
+    border-radius: 30px;
+    padding: 5px 15px 7px 15px;
+">Join</a>
   			</li>
   			
   		</ul>

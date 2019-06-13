@@ -428,6 +428,27 @@ new Chart(document.getElementById("line-chart"), {
 											if ("" == $.trim($(this).val())) { $(this).prop("disabled", false); } }); } }); }; });
 </script>
 
+<script type="text/javascript">
+        function characterCheck() {
+            var RegExp = /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/gi;
+            var obj = document.getElementsByName("keywordGroups[][keywords][]")[0]
+            if (RegExp.test(obj.value)) {
+                alert("특수문자는 입력하실 수 없습니다.");
+                obj.value = obj.value.substring(0, obj.value.length - 1);//특수문자를 지우는 구문
+            }
+        }
+    </script>
+    
+    <script type="text/javascript">
+        function characterCheck() {
+            var RegExp = /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/gi;
+            var obj = document.getElementsByName("keywordGroups[][groupName]")[0]
+            if (RegExp.test(obj.value)) {
+                alert("특수문자는 입력하실 수 없습니다.");
+                obj.value = obj.value.substring(0, obj.value.length - 1);//특수문자를 지우는 구문
+            }
+        }
+    </script>
 
 </head>
 <body>
@@ -490,11 +511,11 @@ new Chart(document.getElementById("line-chart"), {
 		<div style="display:flex;" id="line">
 		
 		<input class="form-control" type="text"style="margin: 3px 0px 0px 0px;"
-						name="keywordGroups[][groupName]" placeholder="주제어 입력" value="" />
+						name="keywordGroups[][groupName]" placeholder="주제어 입력" value="" onkeyup="characterCheck()" onkeydown="characterCheck()"/ >
 		
 		<input class="form-control"
 						style="margin: 3px 0px 0px 0px;" type="text"
-						name="keywordGroups[][keywords][]" placeholder="주제어 동일" value="" />
+						name="keywordGroups[][keywords][]" placeholder="주제어 동일" value="" onkeyup="characterCheck()" onkeydown="characterCheck()" />
 		
 		<button class="btn btn-primary serviceAPIDatalabSearchPlus"
 							type="button" style="background-color: transparent !important;

@@ -164,8 +164,6 @@
     </script>
 
 
-출처: https://sd-berg.tistory.com/entry/javascript-setInterval로-디지털-시계-만들기 [Berg]
-
     <script type="text/javascript">
         $(document).ready(function () {
             $("#sidebar").mCustomScrollbar({
